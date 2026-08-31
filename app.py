@@ -245,7 +245,7 @@ for ch in chapters:
     <div class="story-chapter">
         <div class="chapter-eyebrow">{ch["eyebrow"]}</div>
         <div class="chapter-title">{ch["title"]}</div>
-        <div class="chapter-timeline">{ch["role']} &nbsp;|&nbsp; {ch["timeline"]}</div>
+        <div class="chapter-timeline">{ch["role"]} &nbsp;|&nbsp; {ch["timeline"]}</div>
         
         <div class="story-prose">{ch["prose_1"]}</div>
         
