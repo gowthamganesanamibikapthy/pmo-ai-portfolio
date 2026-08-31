@@ -314,7 +314,7 @@ chapters = [
         "title": "Controlling the Control Room",
         "role": "Release & Deployment Manager | Cognizant",
         "timeline": "March 2016 – December 2018",
-        "story": "Every great production is orchestrated from above. Managing high-stakes multi-environment builds and strict Change Advisory Board (CAB) protocols taught me how to keep every operational string tightly controlled for zero critical downtime.",
+        "story": "Every great production is orchestrated from above. Managing high-stakes multi-environment builds and strict Change Advisory Board (CAB) protocols taught me how to keep every operation running smoothly while minimizing risk.",
         "quote": "Absolute control over underlying release mechanics creates total operational freedom.",
         "story_2": "Standardized core rollout playbooks, securing absolute compliance and zero critical post-release incidents.",
         "skills": ["CAB Governance", "ServiceNow", "ITIL Framework", "Release Tracking", "Defect Shielding"]
@@ -324,7 +324,7 @@ chapters = [
         "title": "Synchronizing Large-Scale Systems",
         "role": "Technical Project Manager | Guidewire Software",
         "timeline": "June 2020 – September 2024",
-        "prose": " Scaling up meant handling complex multi-tiered enterprise implementations across full SDLC cycles. Pulling the strings between development, QA, and business stakeholders required turning chaotic dependencies into smooth release cadences.",
+        "prose": "Scaling up meant handling complex multi-tiered enterprise implementations across full SDLC cycles. Pulling the strings between development, QA, and business stakeholders required tuned collaboration and strategic gate management.",
         "quote": "Great project management pulls all the right technical threads together into a single rhythm.",
         "story_2": "Through disciplined Scrum-of-Scrums alignment and structured Jira deployment gating, I cut lower-environment downtime by 15%.",
         "skills": ["Guidewire InsuranceSuite", "Scrum-of-Scrums", "Jira & Confluence", "Go/No-Go Gates", "RCA Analysis"]
@@ -334,7 +334,7 @@ chapters = [
         "title": "Building Custom PMO Frameworks",
         "role": "Senior PMO & Implementation Lead | Folens & Qualtrics",
         "timeline": "October 2024 – January 2026",
-        "prose": "At this stage, the mission shifted to building brand-new delivery architectures from scratch. Managing $650K ERP rollouts (Dynamics 365) and centralized Coda resource portals meant engineering systems that work seamlessly for both users and executives.",
+        "prose": "At this stage, the mission shifted to building brand-new delivery architectures from scratch. Managing $650K ERP rollouts (Dynamics 365) and centralized Coda resource portals meant establishing governance at scale.",
         "quote": "A master architect doesn't just manage the pieces; they design how the whole ecosystem moves.",
         "story_2": "Delivered Phase 1 rollouts four weeks ahead of schedule and automated business workflows by 30%.",
         "skills": ["Dynamics 365", "PMO Architecture", "Coda Portals", "UAT Mastery", "Stakeholder Sync"]
@@ -344,7 +344,7 @@ chapters = [
         "title": "AI Vibe-Coding & Rapid Innovation",
         "role": "AI Tooling Specialist | Independent R&D",
         "timeline": "February 2026 – Present",
-        "prose": "Combining 8 years of solid enterprise governance with modern AI-assisted prototyping tools. I build interactive web apps, dashboards and automated tooling to eliminate manual PMO busywork entirely.",
+        "prose": "Combining 8 years of solid enterprise governance with modern AI-assisted prototyping tools. I build interactive web apps, dashboards and automated tooling to eliminate manual PMO busywork and accelerate delivery.",
         "quote": "The future belongs to builders who can bridge rigorous governance with rapid, animated execution.",
         "story_2": "Deploying custom Python/Streamlit dashboards, prompt-engineered pipelines, and dynamic micro-apps.",
         "skills": ["Vibe Coding", "Streamlit Apps", "MCP Agents", "Python Automation", "LLM Tooling"]
@@ -375,12 +375,12 @@ for ch in chapters:
 
 # 5. AI Vibe Coding Showcase Section
 st.markdown('<div class="ai-zone-title">AI Vibe-Coding Zone.</div>', unsafe_allow_html=True)
-st.markdown('<p style="text-align: center; color: #94a3b8; max-width: 750px; margin: 0 auto 5rem auto; font-size: 1.25rem; position: relative; z-index: 2;">Interactive projects built by combining deep delivery management knowledge with fast, playful AI prototyping tools.</p>', unsafe_allow_html=True)
+st.markdown('<p style="text-align: center; color: #94a3b8; max-width: 750px; margin: 0 auto 5rem auto; font-size: 1.25rem; position: relative; z-index: 2;">Interactive projects built by combining deep PMO expertise with modern AI tooling. Each piece is engineered to eliminate friction and deliver insight.</p>', unsafe_allow_html=True)
 
 ai_projects = [
     {
         "title": "Interactive Streamlit Dashboards",
-        "desc": "Designed and shipped this high-performance app featuring custom CSS layout for projects whiwh revolve  around complex Cusomter onboarding and custom toolkits for the entire cycle of any domains. Leveraged advanced physics, animated text gradients, and smooth scroll triggers majority of the way and trying to be avoind  as  a meat proxy.",
+        "desc": "Designed and shipped this high-performance app featuring custom CSS layout for projects which revolve around complex customer onboarding and custom toolkits for the entire cycle of a project deployment.",
         "tech": "Python • Streamlit • Advanced CSS"
     },
     {
