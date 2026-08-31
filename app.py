@@ -1,223 +1,297 @@
 import streamlit as st
 
 # 1. Page Config
-st.set_page_config(page_title="Gowtham Ganesan | TPM", page_icon="⚡", layout="wide")
+st.set_page_config(page_title="Gowtham Ganesan | Cinematic Portfolio", page_icon="🍏", layout="wide")
 
-# 2. Shared Master Resume Data (Ensures both modes have 100% full content)
-resume_data = {
-    "summary": "Technical Program Manager and Enterprise Release Lead with 8+ years of experience steering complex ERP (Dynamics 365, Guidewire), SaaS, and enterprise software implementations across global cross-functional teams. Proven track record in structured release governance, environment management, and production readiness within ITIL and Agile/Hybrid environments. Forward-thinking leader adept at leveraging AI tools, vibe-coding, Streamlit, and automated workflows to streamline PMO operations.",
-    "competencies": {
-        "Program & Delivery Governance": "Technical Program Management (TPM), PMO Setup, Scope & Dependency Mapping, Risk Mitigation, Agile/Scrum/Hybrid Delivery, UAT Execution, Business Readiness.",
-        "Release & Production Operations": "Application Release & Deployment, Environment Management, Go/No-Go Gates, CAB (Change Advisory Board), ITIL Incident/Defect Resolution, Production Rollouts.",
-        "AI & Applied Technology": "Vibe Coding (AI-Assisted Prototyping), Model Context Protocol (MCP), Streamlit Dashboards, Python Scripts, LLM Tool Integration, Git/GitHub, CI/CD Coordination.",
-        "Enterprise Platforms & Tools": "Microsoft Dynamics 365 Business Central, Guidewire InsuranceSuite, Qualtrics, ServiceNow, Jira, Confluence, Azure DevOps, Coda."
+# 2. Cinematic CSS & Apple Scroll-Driven Keyframes
+st.markdown("""
+    <style>
+    /* Global Apple Dark Mode Aesthetics */
+    .stApp {
+        background-color: #000000;
+        color: #f5f5f7;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    
+    header {visibility: hidden;}
+    #MainMenu {visibility: hidden;}
+    footer {visibility: hidden;}
+
+    /* Hero Section */
+    .hero-container {
+        padding: 8rem 2rem 4rem 2rem;
+        text-align: center;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .hero-title {
+        font-size: 5.5rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.8rem;
+        color: #86868b;
+        font-weight: 400;
+        line-height: 1.4;
+        letter-spacing: -0.01em;
+    }
+
+    /* Apple-Style Cinematic Story Chapters */
+    .story-chapter {
+        background: rgba(28, 28, 30, 0.6);
+        backdrop-filter: blur(40px);
+        -webkit-backdrop-filter: blur(40px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 36px;
+        padding: 4.5rem;
+        margin: 0 auto 8rem auto;
+        max-width: 1100px;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+        
+        /* Native Browser Scroll-Driven Animations */
+        opacity: 0;
+        transform: translateY(100px) scale(0.94);
+        animation: appleCinematicReveal linear forwards;
+        animation-timeline: view();
+        animation-range: entry 5% cover 30%;
+    }
+    
+    @keyframes appleCinematicReveal {
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .chapter-eyebrow {
+        font-size: 0.95rem;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        color: #2997ff;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+    
+    .chapter-title {
+        font-size: 2.8rem;
+        font-weight: 600;
+        color: #f5f5f7;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.5rem;
+    }
+
+    .chapter-timeline {
+        font-size: 1.15rem;
+        color: #86868b;
+        font-weight: 500;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 1.5rem;
+    }
+
+    /* Immersive Story Paragraphs */
+    .story-prose {
+        font-size: 1.25rem;
+        color: #d2d2d7;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        font-weight: 400;
+    }
+    
+    .story-prose strong {
+        color: #ffffff;
+        font-weight: 600;
+    }
+
+    /* Highlight Pull-Quotes */
+    .story-quote {
+        font-size: 1.4rem;
+        color: #2997ff;
+        font-style: italic;
+        border-left: 3px solid #2997ff;
+        padding-left: 1.5rem;
+        margin: 2.5rem 0;
+        line-height: 1.5;
+    }
+
+    /* Skill Badge Grid */
+    .badge-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-top: 2.5rem;
+    }
+    
+    .apple-pill {
+        background: rgba(255, 255, 255, 0.05);
+        color: #f5f5f7;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 0.6rem 1.4rem;
+        border-radius: 30px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    .apple-pill:hover {
+        background: rgba(41, 151, 255, 0.15);
+        border-color: rgba(41, 151, 255, 0.4);
+        color: #2997ff;
+        transform: translateY(-3px);
+    }
+
+    /* AI Vibe Coding Grid Section */
+    .ai-section-title {
+        font-size: 4rem;
+        font-weight: 700;
+        text-align: center;
+        margin: 8rem 0 1.5rem 0;
+        letter-spacing: -0.02em;
+        background: linear-gradient(180deg, #fff 0%, #a855f7 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .ai-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    .ai-card {
+        background: linear-gradient(145deg, rgba(28,28,30,0.7) 0%, rgba(15,15,18,0.9) 100%);
+        border: 1px solid rgba(168, 85, 247, 0.25);
+        border-radius: 30px;
+        padding: 3rem;
+        transition: all 0.4s ease;
+    }
+    
+    .ai-card:hover {
+        transform: translateY(-8px);
+        border-color: rgba(168, 85, 247, 0.8);
+        box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+# 3. Hero Section
+st.markdown("""
+    <div class="hero-container">
+        <div class="hero-title">The Evolution of Delivery.</div>
+        <div class="hero-subtitle">An immersive, cinematic journey through 8+ years of engineering enterprise scale, program governance, and AI-driven automation.</div>
+    </div>
+""", unsafe_allow_html=True)
+
+# 4. Cinematic Story Chapters Data
+chapters = [
+    {
+        "eyebrow": "Chapter 01 • The Genesis",
+        "title": "The Foundation of Discipline",
+        "role": "Release & Deployment Manager | Cognizant",
+        "timeline": "March 2016 – December 2018",
+        "prose_1": "My career started in the engine room of enterprise IT operations. Managing high-stakes multi-environment builds and strict Change Advisory Board (CAB) workflows across ServiceNow taught me a foundational truth: <strong>zero-incident releases are never a matter of luck</strong>—they are the direct byproduct of ruthless procedural discipline.",
+        "quote": "Standardizing deployment playbooks taught me that rigid processes create the freedom to scale securely.",
+        "prose_2": "By authoring comprehensive release implementation guides and orchestrating rigorous pre-deployment validations, I gained the operational rigor needed to eliminate critical post-implementation downtime entirely, setting the stage for larger enterprise responsibilities.",
+        "skills": ["CAB Governance", "ServiceNow", "ITIL Framework", "Environment Management", "Defect Triaging"]
     },
-    "experience": [
-        {
-            "title": "AI Tooling Specialist & PMO Innovator (Self-Directed)",
-            "company": "Portfolio & Applied AI R&D",
-            "date": "February 2026 – Present",
-            "bullets": [
-                "Built and experimented with AI-assisted applications using natural language prompt-engineering ('vibe coding') and LLM tools to solve common program management operational bottlenecks.",
-                "Developed custom Streamlit dashboards and automated report generators to parse raw project metrics, defect logs, and executive status reports.",
-                "Leveraged Model Context Protocol (MCP) servers and AI agents to auto-generate enterprise governance artifacts and document templates.",
-                "Maintained active GitHub repositories to store project code, manage version control, and document AI tool integration workflows."
-            ]
-        },
-        {
-            "title": "Senior PMO / Implementation Project Manager",
-            "company": "Folens",
-            "date": "July 2025 – January 2026",
-            "bullets": [
-                "Led Phase 1 of a $650K Microsoft Dynamics 365 Business Central rollout for 80+ users, delivering 4 weeks ahead of schedule by optimizing milestone execution and achieving 30% process automation.",
-                "Architected a robust PMO framework—including a centralized documentation repository, strict defect triage workflows, and change control protocols—boosting execution transparency for executive stakeholders.",
-                "Directed Model Office Testing and System Validation to verify end-to-end business workflows, successfully reducing early-stage deployment defects by 25% prior to UAT.",
-                "Orchestrated comprehensive User Acceptance Testing (UAT) and introduced pre-deployment executive walkthroughs to secure 'fit-for-purpose' sign-offs and mitigate go-live risks.",
-                "Governed complex legacy data migrations and deployed custom AI-driven reporting tools, designing targeted knowledge transfer sessions to drive long-term user adoption."
-            ]
-        },
-        {
-            "title": "Senior Technology Consultant",
-            "company": "Qualtrics",
-            "date": "October 2024 – March 2025",
-            "bullets": [
-                "Directed full-lifecycle enterprise SaaS implementations, managing the post-sales handover from Solution Architects to execute custom technical roadmaps and delivery plans.",
-                "Engineered a centralized PMO Handbook and Resource Library using Coda, establishing a single source of truth for delivery templates, governance standards, and cross-team execution.",
-                "Managed a hybrid delivery model, successfully balancing Out-of-the-Box (OOTB) configurations with custom-engineered solutions to meet complex enterprise client specifications.",
-                "Acted as the primary technical liaison between enterprise clients and product teams, aligning scope, dependencies, and milestone execution to prevent scope creep.",
-                "Orchestrated UAT, defect triaging, and go-live readiness gates, delivering targeted knowledge-transfer sessions to accelerate client onboarding and maximize platform adoption."
-            ]
-        },
-        {
-            "title": "Technical Project Manager & Release Coordinator",
-            "company": "Guidewire Software",
-            "date": "June 2020 – September 2024",
-            "bullets": [
-                "Directed end-to-end Guidewire InsuranceSuite implementations across the full SDLC, balancing technical release coordination with strict program governance for enterprise-scale customers.",
-                "Facilitated Scrum-of-Scrums and managed complex cross-functional dependencies, driving technical alignment between development, QA, and business stakeholders.",
-                "Orchestrated build and deployment coordination across Dev, QA, and UAT environments, implementing daily deployment checklists in Jira that reduced lower-environment downtime by 15%.",
-                "Governed release cadences, Go/No-Go readiness gates, defect triaging, and pre-deployment validation to ensure high-quality code promotion with minimal operational disruption.",
-                "Led post-release evaluations and Root Cause Analysis (RCA) sessions, analyzing deployment defect patterns to continuously optimize release efficiency, stability, and delivery processes."
-            ]
-        },
-        {
-            "title": "Release & Deployment Manager",
-            "company": "Cognizant",
-            "date": "March 2016 – December 2018",
-            "bullets": [
-                "Managed complex, multi-environment builds, deployments, and rollbacks across Development, QA, and Production environments.",
-                "Enforced Change Advisory Board (CAB) governance and managed change artifacts via ServiceNow, ensuring strict procedural compliance for high-stakes releases.",
-                "Authored the Release Implementation Playbook and standardized deployment checklists, achieving 100% completion of release tasks with zero critical post-deployment incidents.",
-                "Directed UAT defect triaging and post-release Root Cause Analysis (RCA), accelerating defect resolution by 25% and reducing repeat incidents by 15%."
-            ]
-        }
-    ]
-}
+    {
+        "eyebrow": "Chapter 02 • The Orchestrator",
+        "title": "Synchronizing Chaos at Scale",
+        "role": "Technical Project Manager | Guidewire Software",
+        "timeline": "June 2020 – September 2024",
+        "prose_1": "Stepping into enterprise InsuranceSuite implementations meant zooming out from individual release windows to manage the entire Software Development Life Cycle (SDLC). Cross-functional friction between development, QA, and business workstreams was constant—and solving it required structural harmonization.",
+        "quote": "True program management isn't just tracking tasks; it's aligning human intent across complex technical dependencies.",
+        "prose_2": "By facilitating Scrum-of-Scrums and embedding structured deployment checklists directly into Jira, I learned how to transform chaotic cross-team dependencies into predictable release trains. This systemic alignment successfully drove down lower-environment downtime by 15%.",
+        "skills": ["Guidewire InsuranceSuite", "Scrum-of-Scrums", "Jira & Confluence", "Go/No-Go Gates", "Root Cause Analysis"]
+    },
+    {
+        "eyebrow": "Chapter 03 • The Architect",
+        "title": "Engineering Frameworks from Scratch",
+        "role": "Senior PMO & Implementation Lead | Folens & Qualtrics",
+        "timeline": "October 2024 – January 2026",
+        "prose_1": "With delivery mechanics mastered, the frontier shifted to architectural design. At Folens and Qualtrics, I was tasked with engineering centralized PMO frameworks from the ground up—balancing strict Out-of-the-Box SaaS configurations with custom ERP solutions like Microsoft Dynamics 365 Business Central.",
+        "quote": "Building custom PMO frameworks transformed how executives view delivery: shifting it from a reactive cost center to a predictive engine.",
+        "prose_2": "By optimizing milestone execution and driving centralized documentation portals via Coda, I led Phase 1 rollouts for 80+ users four weeks ahead of schedule while achieving a 30% boost in overall business process automation.",
+        "skills": ["Dynamics 365", "PMO Architecture", "Coda", "UAT Orchestration", "Stakeholder Alignment"]
+    },
+    {
+        "eyebrow": "Chapter 04 • The Horizon",
+        "title": "AI-Powered Program Management",
+        "role": "AI Tooling Specialist & Vibe Coder | Independent R&D",
+        "timeline": "February 2026 – Present",
+        "prose_1": "The modern PMO cannot run on spreadsheets and manual status reports alone. Today, I combine my 8 years of foundational delivery governance with advanced AI vibe-coding and natural language prompt architecture.",
+        "quote": "The future belongs to builders who can bridge rigorous enterprise governance with rapid AI prototyping.",
+        "prose_2": "By designing custom Streamlit web dashboards, experimenting with Model Context Protocol (MCP) servers, and deploying autonomous LLM agents, I eliminate manual PMO reporting overhead in real time.",
+        "skills": ["Vibe Coding", "Streamlit Dev", "MCP Agents", "Python Automation", "LLM Integration"]
+    }
+]
 
-# 3. Sidebar Mode Switch
-st.sidebar.markdown("### 🎛️ Portfolio Mode")
-is_apple_mode = st.sidebar.toggle("🍏 Enable Cinematic (Apple) Mode", value=False)
-st.sidebar.markdown("---")
-st.sidebar.markdown("**Gowtham Ganesan Ambikapathy**\n\n📍 Dublin, Ireland | 🛂 Stamp 4")
-
-# ==========================================
-# MODE A: CLASSIC / STATIC RESUME
-# ==========================================
-if not is_apple_mode:
-    st.title("Gowtham Ganesan Ambikapathy")
-    st.subheader("Technical Program Manager | Enterprise Release & Deployment Lead")
-    st.markdown("[LinkedIn Profile] | [GitHub / Portfolio] | gowthamganesanambikapathy@gmail.com")
-    st.markdown("---")
+# Render Cinematic Chapters
+for ch in chapters:
+    badges_html = "".join([f'<span class="apple-pill">{skill}</span>' for skill in ch["skills"]])
     
-    st.markdown("### PROFESSIONAL SUMMARY")
-    st.write(resume_data["summary"])
-    
-    st.markdown("### CORE COMPETENCIES")
-    for category, skills in resume_data["competencies"].items():
-        st.markdown(f"**{category}:** {skills}")
+    st.markdown(f"""
+    <div class="story-chapter">
+        <div class="chapter-eyebrow">{ch["eyebrow"]}</div>
+        <div class="chapter-title">{ch["title"]}</div>
+        <div class="chapter-timeline">{ch["role']} &nbsp;|&nbsp; {ch["timeline"]}</div>
         
-    st.markdown("### PROFESSIONAL EXPERIENCE")
-    for job in resume_data["experience"]:
-        st.markdown(f"#### {job['title']}")
-        st.markdown(f"**{job['company']}** | {job['date']}")
-        for bullet in job["bullets"]:
-            st.markdown(f"- {bullet}")
-        st.write("")
+        <div class="story-prose">{ch["prose_1"]}</div>
         
-    st.markdown("### EDUCATION & CERTIFICATIONS")
-    st.markdown("- **MSc in Data Analytics** | Dublin Business School, Ireland")
-    st.markdown("- **B.E. in Computer Science & Engineering** | Anna University, India")
-    st.markdown("- **PMP Candidate** | Project Management Institute (Expected Q4 2026)")
-    st.markdown("- **SAFe 6.0 Release Train Engineer (RTE)** | Scaled Agile (In Preparation)")
-
-# ==========================================
-# MODE B: CINEMATIC APPLE-STYLE MODE
-# ==========================================
-else:
-    # Injecting CSS for Scroll-Driven Animations
-    st.markdown("""
-        <style>
-        /* Force dark theme aesthetics */
-        .stApp {
-            background-color: #000000;
-            color: #f5f5f7;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+        <div class="story-quote">"{ch["quote"]}"</div>
         
-        /* Typography */
-        .apple-hero {
-            font-size: 4.5rem;
-            font-weight: 700;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            background: linear-gradient(180deg, #fff 0%, #a1a1a6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-align: center;
-            margin-top: 5rem;
-            margin-bottom: 2rem;
-        }
+        <div class="story-prose">{ch["prose_2"]}</div>
         
-        .apple-subhero {
-            font-size: 1.5rem;
-            color: #86868b;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 10rem auto;
-            line-height: 1.5;
-        }
-
-        /* Scroll-Driven Animation Cards */
-        .apple-card {
-            background: rgba(28, 28, 30, 0.5);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 4rem;
-            margin: 0 auto 8rem auto;
-            max-width: 1000px;
-            
-            /* CSS Scroll Timeline */
-            opacity: 0;
-            transform: translateY(100px) scale(0.95);
-            animation: appleReveal linear forwards;
-            animation-timeline: view();
-            animation-range: entry 5% cover 25%;
-        }
-        
-        @keyframes appleReveal {
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-        
-        .apple-card-title {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: #f5f5f7;
-            margin-bottom: 0.5rem;
-        }
-        
-        .apple-card-subtitle {
-            font-size: 1.2rem;
-            color: #2997ff;
-            font-weight: 500;
-            margin-bottom: 2rem;
-        }
-        
-        .apple-bullet {
-            font-size: 1.1rem;
-            color: #a1a1a6;
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            display: flex;
-        }
-        .apple-bullet::before {
-            content: "•";
-            color: #2997ff;
-            font-size: 1.5rem;
-            margin-right: 1rem;
-            line-height: 1.2;
-        }
-        </style>
+        <div class="badge-wrap">
+            {badges_html}
+        </div>
+    </div>
     """, unsafe_allow_html=True)
 
-    # Render Hero Section
-    st.markdown('<div class="apple-hero">Engineering Enterprise Delivery.</div>', unsafe_allow_html=True)
-    st.markdown(f'<div class="apple-subhero">{resume_data["summary"]}</div>', unsafe_allow_html=True)
+# 5. AI & Vibe Coding Showcase Section
+st.markdown('<div class="ai-section-title">Applied AI & Vibe Coding.</div>', unsafe_allow_html=True)
+st.markdown('<p style="text-align: center; color: #86868b; max-width: 750px; margin: 0 auto 5rem auto; font-size: 1.3rem; line-height: 1.5;">Showcasing active applications built by merging enterprise delivery experience with cutting-edge AI prototyping workflows.</p>', unsafe_allow_html=True)
 
-    # Loop through experience and generate Apple-style scrolling cards
-    for job in resume_data["experience"]:
-        bullets_html = "".join([f'<div class="apple-bullet">{bullet}</div>' for bullet in job["bullets"]])
-        
-        st.markdown(f"""
-        <div class="apple-card">
-            <div class="apple-card-title">{job["title"]}</div>
-            <div class="apple-card-subtitle">{job["company"]} | {job["date"]}</div>
-            <div style="margin-top: 2rem;">
-                {bullets_html}
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+ai_projects = [
+    {
+        "title": "Interactive Streamlit Portfolios",
+        "desc": "Engineered this very web application using Python and Streamlit, featuring custom CSS keyframe animations, glassmorphism design layouts, and dynamic state transitions.",
+        "tech": "Python • Streamlit • CSS3"
+    },
+    {
+        "title": "Automated PMO Governance Agents",
+        "desc": "Built workflow helpers using Model Context Protocol (MCP) to instantly parse raw project metrics, log defects, and auto-generate executive status report documents.",
+        "tech": "MCP Servers • LLMs • Automation"
+    },
+    {
+        "title": "Agile Defect Triage Simulators",
+        "desc": "Created localized prototype tools leveraging prompt engineering to streamline root-cause analysis reporting and accelerate lower-environment release validation.",
+        "tech": "Prompt Engineering • Python Scripting"
+    }
+]
+
+st.markdown('<div class="ai-grid">', unsafe_allow_html=True)
+for proj in ai_projects:
+    st.markdown(f"""
+    <div class="ai-card">
+        <div style="font-size: 1.6rem; font-weight: 600; color: #ffffff; margin-bottom: 1rem;">{proj["title"]}</div>
+        <div style="font-size: 1.1rem; color: #94a3b8; line-height: 1.6; margin-bottom: 2rem;">{proj["desc"]}</div>
+        <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #a855f7; font-weight: 600; margin-bottom: 0.5rem;">Tech Stack</div>
+        <div style="color: #f5f5f7; font-weight: 500; font-size: 1rem;">{proj["tech"]}</div>
+    </div>
+    """, unsafe_allow_html=True)
+st.markdown('</div>', unsafe_allow_html=True)
+
+# Footer Spacing
+st.markdown('<div style="height: 180px;"></div>', unsafe_allow_html=True)
