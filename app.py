@@ -6,50 +6,85 @@ st.set_page_config(
     layout="wide"
 )
 
-# Sophisticated Glassmorphism & High-Animation Custom CSS
+# Advanced CSS with High-End Special Effects & Animations
 st.markdown("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
     .stApp {
-        background-color: #030305;
+        background: radial-gradient(circle at 50% 10%, #111019 0%, #030305 100%);
         color: #f8fafc;
         font-family: 'Plus Jakarta Sans', sans-serif;
+        overflow-x: hidden;
     }
     
     header {visibility: hidden;}
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 
-    /* Master Glass Container Enclosing Entire App */
+    /* Glowing Ambient Background Orbs */
+    .ambient-glow-1 {
+        position: fixed;
+        top: 10%;
+        left: 15%;
+        width: 400px;
+        height: 400px;
+        background: rgba(168, 85, 247, 0.08);
+        filter: blur(120px);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        animation: orbFloat 10s ease-in-out infinite alternate;
+    }
+
+    .ambient-glow-2 {
+        position: fixed;
+        bottom: 10%;
+        right: 15%;
+        width: 450px;
+        height: 450px;
+        background: rgba(78, 205, 196, 0.06);
+        filter: blur(140px);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 0;
+        animation: orbFloat 14s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes orbFloat {
+        0% { transform: translateY(0px) scale(1); }
+        100% { transform: translateY(-30px) scale(1.1); }
+    }
+
+    /* Master Glass Shell */
     .master-glass-shell {
-        background: rgba(12, 12, 18, 0.9);
-        backdrop-filter: blur(40px);
-        -webkit-backdrop-filter: blur(40px);
+        background: rgba(14, 14, 22, 0.75);
+        backdrop-filter: blur(30px);
+        -webkit-backdrop-filter: blur(30px);
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 40px;
-        padding: 4rem 3.5rem;
-        max-width: 1250px;
-        margin: 2.5rem auto;
-        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.9);
+        border-radius: 36px;
+        padding: 3.5rem 3rem;
+        max-width: 1200px;
+        margin: 2rem auto;
+        box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         position: relative;
-        overflow: hidden;
-        animation: shellEntrance 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        z-index: 1;
+        animation: shellFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    @keyframes shellEntrance {
-        from { opacity: 0; transform: translateY(30px) scale(0.98); }
-        to { opacity: 1; transform: translateY(0) scale(1); }
+    @keyframes shellFadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Profile Header & Glowing LinkedIn Badge */
+    /* Profile Header */
     .profile-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         gap: 2rem;
-        margin-bottom: 3.5rem;
+        margin-bottom: 3rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
         padding-bottom: 2.5rem;
     }
@@ -57,7 +92,7 @@ st.markdown("""
     .name-title {
         font-size: 3.2rem;
         font-weight: 800;
-        background: linear-gradient(135deg, #ffffff 0%, #818cf8 50%, #c084fc 100%);
+        background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #818cf8 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin: 0;
@@ -68,33 +103,41 @@ st.markdown("""
         background: linear-gradient(135deg, rgba(14, 165, 233, 0.2) 0%, rgba(56, 189, 248, 0.1) 100%);
         border: 1px solid rgba(56, 189, 248, 0.4);
         color: #38bdf8;
-        padding: 0.7rem 1.8rem;
+        padding: 0.75rem 1.8rem;
         border-radius: 50px;
         font-weight: 700;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        box-shadow: 0 10px 25px rgba(14, 165, 233, 0.15);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
     }
     
     .linkedin-badge:hover {
         background: #0ea5e9;
         color: #ffffff;
         box-shadow: 0 15px 35px rgba(14, 165, 233, 0.4);
-        transform: translateY(-4px) scale(1.02);
+        transform: translateY(-3px);
     }
 
-    /* Encapsulated Release Cloud Component */
+    /* Encapsulated Release Cloud */
     .release-cloud {
-        background: linear-gradient(145deg, rgba(20, 20, 32, 0.7) 0%, rgba(10, 10, 18, 0.9) 100%);
+        background: linear-gradient(135deg, rgba(20, 20, 32, 0.8) 0%, rgba(10, 10, 18, 0.95) 100%);
         border: 1px solid rgba(78, 205, 196, 0.3);
         border-radius: 28px;
         padding: 2.5rem;
         margin-bottom: 3rem;
-        box-shadow: inset 0 0 40px rgba(78, 205, 196, 0.04), 0 20px 40px rgba(0, 0, 0, 0.4);
+        box-shadow: inset 0 0 30px rgba(78, 205, 196, 0.05), 0 15px 35px rgba(0,0,0,0.4);
         position: relative;
+        overflow: hidden;
+    }
+
+    .release-cloud::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 2px;
+        background: linear-gradient(90deg, transparent, #4ECDC4, transparent);
     }
 
     .cloud-title {
@@ -106,7 +149,7 @@ st.markdown("""
         margin-bottom: 1.5rem;
         display: flex;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
     }
 
     .artifact-grid {
@@ -117,7 +160,7 @@ st.markdown("""
 
     .artifact-pill {
         background: rgba(78, 205, 196, 0.08);
-        border: 1px solid rgba(78, 205, 196, 0.25);
+        border: 1px solid rgba(78, 205, 196, 0.3);
         color: #4ECDC4;
         padding: 0.6rem 1.2rem;
         border-radius: 14px;
@@ -130,19 +173,27 @@ st.markdown("""
     .artifact-pill:hover {
         background: #4ECDC4;
         color: #030305;
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(78, 205, 196, 0.3);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 8px 20px rgba(78, 205, 196, 0.4);
     }
 
-    /* Dark Skill Cloud Component */
+    /* Dark Skill Cloud */
     .dark-skill-cloud {
-        background: linear-gradient(145deg, rgba(12, 8, 20, 0.95) 0%, rgba(4, 4, 10, 0.99) 100%);
-        border: 2px solid rgba(168, 85, 247, 0.35);
+        background: linear-gradient(135deg, rgba(12, 8, 20, 0.95) 0%, rgba(4, 4, 10, 0.99) 100%);
+        border: 1px solid rgba(168, 85, 247, 0.4);
         border-radius: 32px;
         padding: 3.5rem;
         margin-bottom: 4rem;
-        box-shadow: 0 25px 70px rgba(168, 85, 247, 0.15);
+        box-shadow: 0 25px 60px rgba(168, 85, 247, 0.15);
         position: relative;
+        overflow: hidden;
+    }
+
+    .dark-skill-cloud::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 2px;
+        background: linear-gradient(90deg, transparent, #a855f7, transparent);
     }
 
     .dark-cloud-title {
@@ -157,7 +208,7 @@ st.markdown("""
 
     .skill-pillars-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         gap: 2rem;
     }
 
@@ -167,6 +218,7 @@ st.markdown("""
         border-radius: 24px;
         padding: 2.5rem;
         transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        position: relative;
     }
 
     .skill-pillar-card:hover {
@@ -177,21 +229,21 @@ st.markdown("""
     }
 
     .pillar-name {
-        font-size: 1.3rem;
+        font-size: 1.25rem;
         font-weight: 700;
         color: #ffffff;
         margin-bottom: 1rem;
     }
 
     .pillar-desc {
-        font-size: 1rem;
+        font-size: 0.98rem;
         color: #94a3b8;
         line-height: 1.7;
     }
 
-    /* Chapter Cards inside Glass Shell */
+    /* Chapter Cards */
     .chapter-box {
-        background: rgba(18, 18, 28, 0.65);
+        background: rgba(18, 18, 28, 0.7);
         border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 28px;
         padding: 3rem;
@@ -202,8 +254,8 @@ st.markdown("""
     .chapter-box:hover {
         border-color: rgba(244, 114, 182, 0.4);
         transform: translateY(-5px);
-        box-shadow: 0 20px 50px rgba(244, 114, 182, 0.12);
-        background: rgba(22, 22, 35, 0.85);
+        box-shadow: 0 20px 50px rgba(244, 114, 182, 0.15);
+        background: rgba(22, 22, 35, 0.9);
     }
 
     .chapter-badge {
@@ -231,15 +283,18 @@ st.markdown("""
     }
 
     .chapter-text {
-        font-size: 1.1rem;
+        font-size: 1.05rem;
         color: #cbd5e1;
         line-height: 1.8;
         margin-bottom: 1.5rem;
     }
     </style>
+
+    <div class="ambient-glow-1"></div>
+    <div class="ambient-glow-2"></div>
 """, unsafe_allow_html=True)
 
-# Main Tab Navigation
+# Native Streamlit Tabs for Clean Rendering and Reliability
 tab_portfolio, tab_codebase = st.tabs(["✨ Cinematic Portfolio & Journey", "💻 Codebase & GitHub Hub"])
 
 with tab_portfolio:
