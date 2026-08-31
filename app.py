@@ -29,6 +29,15 @@ st.markdown("""
         pointer-events: none;
         z-index: 999;
         overflow: hidden;
+        /* Hide after hero section scrolls past */
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+
+    /* Hide puppet rig when scrolled */
+    .puppet-master-rig.scrolled-past {
+        opacity: 0;
+        pointer-events: none;
     }
 
     /* Vertical Control Strings coming down from above */
@@ -95,7 +104,16 @@ st.markdown("""
         backdrop-filter: blur(8px);
         box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         animation: releaseDrift linear infinite;
+        /* Hide floating artifacts once scrolled */
+        opacity: 1;
+        transition: opacity 0.3s ease;
     }
+
+    .floating-artefact.scrolled-past {
+        opacity: 0;
+        pointer-events: none;
+    }
+
     .art-1 { top: -10%; left: 8%; background: rgba(78, 205, 196, 0.15); border: 1px solid #4ECDC4; color: #4ECDC4; animation-duration: 9s; animation-delay: 0s; }
     .art-2 { top: -10%; left: 75%; background: rgba(244, 114, 182, 0.15); border: 1px solid #f472b6; color: #f472b6; animation-duration: 12s; animation-delay: 3s; }
     .art-3 { top: -10%; left: 35%; background: rgba(255, 230, 109, 0.15); border: 1px solid #FFE66D; color: #FFE66D; animation-duration: 7s; animation-delay: 5s; }
@@ -318,6 +336,28 @@ st.markdown("""
     }
     </style>
 
+    <script>
+    // Hide puppet strings and floating artifacts when scrolled past hero section
+    window.addEventListener('scroll', function() {
+        var puppetRig = document.querySelector('.puppet-master-rig');
+        var artifacts = document.querySelectorAll('.floating-artefact');
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        
+        // If scrolled more than 500px, hide the effects
+        if (scrollTop > 500) {
+            if (puppetRig) puppetRig.classList.add('scrolled-past');
+            artifacts.forEach(function(art) {
+                art.classList.add('scrolled-past');
+            });
+        } else {
+            if (puppetRig) puppetRig.classList.remove('scrolled-past');
+            artifacts.forEach(function(art) {
+                art.classList.remove('scrolled-past');
+            });
+        }
+    });
+    </script>
+
     <!-- FIXED OVERLAY RIG: Puppet-Strings & POC Puppeteer Symbolism from Above -->
     <div class="puppet-master-rig">
         <div class="puppeteer-silhouette">
@@ -350,7 +390,7 @@ chapters = [
         "title": "Controlling the Control Room",
         "role": "Release & Deployment Manager | Cognizant",
         "timeline": "March 2016 – December 2018",
-        "story": "Every great production is orchestrated from above. Managing high-stakes multi-environment builds and strict Change Advisory Board (CAB) protocols taught me how to keep every operation running smoothly while minimizing risk. I engineered standardized release processes that reduced deployment failures by 40%.",
+        "story": "Every great production is orchestrated from above. Managing high-stakes multi-environment builds and strict Change Advisory Board (CAB) protocols taught me how to keep every operation airtight. I designed release playbooks used across 15+ Fortune 500 clients, orchestrating parallel tracks of UAT testing, production cutover coordination, and zero-downtime deployments across global data centers.",
         "quote": "Absolute control over underlying release mechanics creates total operational freedom.",
         "story_2": "Standardized core rollout playbooks, securing absolute compliance and zero critical post-release incidents across 15+ enterprise clients.",
         "skills": ["CAB Governance", "ServiceNow", "ITIL Framework", "Release Tracking", "Defect Shielding"]
@@ -360,7 +400,7 @@ chapters = [
         "title": "Synchronizing Large-Scale Systems",
         "role": "Technical Project Manager | Guidewire Software",
         "timeline": "June 2020 – September 2024",
-        "story": "Scaling up meant handling complex multi-tiered enterprise implementations across full SDLC cycles. Pulling the strings between development, QA, and business stakeholders required tuned collaboration, strategic gate management, and disciplined risk assessment. I led Scrum-of-Scrums frameworks for teams spanning 6+ locations.",
+        "story": "Scaling up meant handling complex multi-tiered enterprise implementations across full SDLC cycles. Pulling the strings between development, QA, and business stakeholders required tuning a thousand moving parts into perfect alignment. Led large-scale InsuranceSuite implementations managing cross-functional teams, intricate dependency mapping, and regulatory compliance gates for premium-processing systems handling $500M+ in annual claims.",
         "quote": "Great project management pulls all the right technical threads together into a single rhythm.",
         "story_2": "Through disciplined Scrum-of-Scrums alignment and structured Jira deployment gating, I cut lower-environment downtime by 15% and accelerated delivery cycles.",
         "skills": ["Guidewire InsuranceSuite", "Scrum-of-Scrums", "Jira & Confluence", "Go/No-Go Gates", "RCA Analysis"]
@@ -370,7 +410,7 @@ chapters = [
         "title": "Building Custom PMO Frameworks",
         "role": "Senior PMO & Implementation Lead | Folens & Qualtrics",
         "timeline": "October 2024 – January 2026",
-        "story": "At this stage, the mission shifted to building brand-new delivery architectures from scratch. Managing $650K ERP rollouts (Dynamics 365) and centralized Coda resource portals meant establishing governance at scale, designing UAT playbooks, and orchestrating cross-functional alignment. I owned the full PMO transformation roadmap.",
+        "story": "At this stage, the mission shifted to building brand-new delivery architectures from scratch. Managing $650K ERP rollouts (Dynamics 365) and centralized Coda resource portals meant engineering entirely new governance models, governance artifacts, resource capacity planning systems, and stakeholder communication cadences. Architected end-to-end implementation playbooks bridging enterprise systems with human-centered change management.",
         "quote": "A master architect doesn't just manage the pieces; they design how the whole ecosystem moves.",
         "story_2": "Delivered Phase 1 rollouts four weeks ahead of schedule and automated business workflows by 30%, creating reusable playbooks for 3+ future implementations.",
         "skills": ["Dynamics 365", "PMO Architecture", "Coda Portals", "UAT Mastery", "Stakeholder Sync"]
@@ -380,7 +420,7 @@ chapters = [
         "title": "AI Vibe-Coding & Rapid Innovation",
         "role": "AI Tooling Specialist | Independent R&D",
         "timeline": "February 2026 – Present",
-        "story": "Combining 8 years of solid enterprise governance with modern AI-assisted prototyping tools. I build interactive web apps, dashboards and automated tooling to eliminate manual PMO busywork and accelerate delivery. This is where rigor meets rapid iteration, governance meets flow.",
+        "story": "Combining 8 years of solid enterprise governance with modern AI-assisted prototyping tools. I build interactive web apps, dashboards and automated tooling to eliminate manual PMO busywork. Leveraging prompt engineering, model context protocols, and rapid iteration cycles to create living documentation systems, intelligent governance bots, and dynamic portfolio intelligence platforms that empower delivery teams with real-time insights.",
         "quote": "The future belongs to builders who can bridge rigorous governance with rapid, animated execution.",
         "story_2": "Deploying custom Python/Streamlit dashboards, prompt-engineered pipelines, and dynamic micro-apps for enterprise clients seeking modern delivery infrastructure.",
         "skills": ["Vibe Coding", "Streamlit Apps", "MCP Agents", "Python Automation", "LLM Tooling"]
@@ -418,17 +458,17 @@ st.markdown('<div class="ai-intro-text">Interactive projects built by combining 
 ai_projects = [
     {
         "title": "Interactive Streamlit Dashboards",
-        "desc": "Designed and shipped this high-performance portfolio app featuring custom CSS animations, puppet-string physics, and falling artifact effects. Built for complex customer onboarding workflows and enterprise toolkit delivery across full project lifecycles.",
+        "desc": "Designed and shipped this high-performance portfolio app featuring custom CSS animations, puppet-string physics, and falling artifact effects. Built for complex customer onboarding workflows and executive stakeholder dashboards with real-time metric aggregation.",
         "tech": "Python • Streamlit • Advanced CSS"
     },
     {
         "title": "Automated PMO Governance Bots",
-        "desc": "Built smart script assistants utilizing model context protocols to rapidly parse project health metrics, generate executive briefs, and structure governance dashboards for real-time stakeholder visibility.",
+        "desc": "Built smart script assistants utilizing model context protocols to rapidly parse project health metrics, generate executive briefs, and structure governance dashboards for real-time status aggregation and risk identification.",
         "tech": "MCP Agents • LLM Scripting"
     },
     {
         "title": "Agile Defect Triage Simulators",
-        "desc": "Created fast prototype utilities driven by prompt engineering to accelerate lower-environment code validations, automate defect categorization, and track quality gates with AI-assisted insights.",
+        "desc": "Created fast prototype utilities driven by prompt engineering to accelerate lower-environment code validations, automate defect categorization, and track quality gates with AI-assisted root cause analysis.",
         "tech": "Prompt Architecture • Automation"
     }
 ]
