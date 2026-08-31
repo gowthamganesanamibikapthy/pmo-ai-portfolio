@@ -149,25 +149,12 @@ st.markdown("""
         transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         position: relative;
         z-index: 2;
-        
-        opacity: 0;
-        transform: translateY(80px) scale(0.95);
-        animation: playfulReveal linear forwards;
-        animation-timeline: view();
-        animation-range: entry 5% cover 30%;
     }
     
     .fun-chapter-card:hover {
         transform: translateY(-8px) scale(1.01);
         border-color: #f472b6;
         box-shadow: 0 30px 70px rgba(244, 114, 182, 0.25);
-    }
-
-    @keyframes playfulReveal {
-        to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-        }
     }
 
     .card-badge-top {
@@ -204,6 +191,8 @@ st.markdown("""
         line-height: 1.8;
         margin-bottom: 1.8rem;
         font-weight: 400;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .card-quote-box {
@@ -216,6 +205,8 @@ st.markdown("""
         font-size: 1.25rem;
         margin: 2rem 0;
         font-weight: 500;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .pill-box {
@@ -234,6 +225,7 @@ st.markdown("""
         font-size: 0.95rem;
         font-weight: 600;
         transition: all 0.3s ease;
+        white-space: nowrap;
     }
 
     .fun-pill:hover {
@@ -255,6 +247,19 @@ st.markdown("""
         -webkit-text-fill-color: transparent;
         position: relative;
         z-index: 2;
+    }
+
+    .ai-intro-text {
+        text-align: center;
+        color: #94a3b8;
+        max-width: 750px;
+        margin: 0 auto 5rem auto;
+        font-size: 1.25rem;
+        position: relative;
+        z-index: 2;
+        padding: 0 2rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
     }
 
     .ai-cards-grid {
@@ -280,6 +285,36 @@ st.markdown("""
         transform: translateY(-10px);
         border-color: #a855f7;
         box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
+    }
+
+    .ai-card-title {
+        font-size: 1.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 0.8rem;
+    }
+
+    .ai-card-desc {
+        font-size: 1.05rem;
+        color: #94a3b8;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+    }
+
+    .ai-card-tech-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: #a855f7;
+        font-weight: 700;
+        margin-bottom: 0.4rem;
+    }
+
+    .ai-card-tech {
+        color: #f8fafc;
+        font-weight: 600;
     }
     </style>
 
@@ -308,7 +343,7 @@ st.markdown("""
     </div>
 """, unsafe_allow_html=True)
 
-# 4. Content Chapters
+# 4. Content Chapters - FULLY COMPLETE DATA
 chapters = [
     {
         "badge": "Level 01 • The Foundation",
@@ -325,7 +360,7 @@ chapters = [
         "title": "Synchronizing Large-Scale Systems",
         "role": "Technical Project Manager | Guidewire Software",
         "timeline": "June 2020 – September 2024",
-        "prose": "Scaling up meant handling complex multi-tiered enterprise implementations across full SDLC cycles. Pulling the strings between development, QA, and business stakeholders required tuned collaboration, strategic gate management, and disciplined risk assessment. I led Scrum-of-Scrums frameworks for teams spanning 6+ locations.",
+        "story": "Scaling up meant handling complex multi-tiered enterprise implementations across full SDLC cycles. Pulling the strings between development, QA, and business stakeholders required tuned collaboration, strategic gate management, and disciplined risk assessment. I led Scrum-of-Scrums frameworks for teams spanning 6+ locations.",
         "quote": "Great project management pulls all the right technical threads together into a single rhythm.",
         "story_2": "Through disciplined Scrum-of-Scrums alignment and structured Jira deployment gating, I cut lower-environment downtime by 15% and accelerated delivery cycles.",
         "skills": ["Guidewire InsuranceSuite", "Scrum-of-Scrums", "Jira & Confluence", "Go/No-Go Gates", "RCA Analysis"]
@@ -335,7 +370,7 @@ chapters = [
         "title": "Building Custom PMO Frameworks",
         "role": "Senior PMO & Implementation Lead | Folens & Qualtrics",
         "timeline": "October 2024 – January 2026",
-        "prose": "At this stage, the mission shifted to building brand-new delivery architectures from scratch. Managing $650K ERP rollouts (Dynamics 365) and centralized Coda resource portals meant establishing governance at scale, designing UAT playbooks, and orchestrating cross-functional alignment. I owned the full PMO transformation roadmap.",
+        "story": "At this stage, the mission shifted to building brand-new delivery architectures from scratch. Managing $650K ERP rollouts (Dynamics 365) and centralized Coda resource portals meant establishing governance at scale, designing UAT playbooks, and orchestrating cross-functional alignment. I owned the full PMO transformation roadmap.",
         "quote": "A master architect doesn't just manage the pieces; they design how the whole ecosystem moves.",
         "story_2": "Delivered Phase 1 rollouts four weeks ahead of schedule and automated business workflows by 30%, creating reusable playbooks for 3+ future implementations.",
         "skills": ["Dynamics 365", "PMO Architecture", "Coda Portals", "UAT Mastery", "Stakeholder Sync"]
@@ -345,16 +380,18 @@ chapters = [
         "title": "AI Vibe-Coding & Rapid Innovation",
         "role": "AI Tooling Specialist | Independent R&D",
         "timeline": "February 2026 – Present",
-        "prose": "Combining 8 years of solid enterprise governance with modern AI-assisted prototyping tools. I build interactive web apps, dashboards and automated tooling to eliminate manual PMO busywork and accelerate delivery. This is where rigor meets rapid iteration—governance meets flow.",
+        "story": "Combining 8 years of solid enterprise governance with modern AI-assisted prototyping tools. I build interactive web apps, dashboards and automated tooling to eliminate manual PMO busywork and accelerate delivery. This is where rigor meets rapid iteration, governance meets flow.",
         "quote": "The future belongs to builders who can bridge rigorous governance with rapid, animated execution.",
         "story_2": "Deploying custom Python/Streamlit dashboards, prompt-engineered pipelines, and dynamic micro-apps for enterprise clients seeking modern delivery infrastructure.",
         "skills": ["Vibe Coding", "Streamlit Apps", "MCP Agents", "Python Automation", "LLM Tooling"]
     }
 ]
 
-# Render Chapters
+# Render Chapters with proper structure
 for ch in chapters:
     pills_html = "".join([f'<span class="fun-pill">{skill}</span>' for skill in ch["skills"]])
+    
+    story_content = ch.get("story", ch.get("prose", ""))
     
     st.markdown(f"""
     <div class="fun-chapter-card">
@@ -362,7 +399,7 @@ for ch in chapters:
         <div class="card-main-title">{ch["title"]}</div>
         <div class="card-time-role">{ch["role"]} &nbsp;•&nbsp; {ch["timeline"]}</div>
         
-        <div class="card-story-text">{ch.get("story", ch.get("prose"))}</div>
+        <div class="card-story-text">{story_content}</div>
         
         <div class="card-quote-box">"{ch["quote"]}"</div>
         
@@ -376,7 +413,7 @@ for ch in chapters:
 
 # 5. AI Vibe Coding Showcase Section
 st.markdown('<div class="ai-zone-title">AI Vibe-Coding Zone.</div>', unsafe_allow_html=True)
-st.markdown('<p style="text-align: center; color: #94a3b8; max-width: 750px; margin: 0 auto 5rem auto; font-size: 1.25rem; position: relative; z-index: 2;">Interactive projects built by combining deep PMO expertise with modern AI tooling. Each piece is engineered to eliminate friction and deliver insight.</p>', unsafe_allow_html=True)
+st.markdown('<div class="ai-intro-text">Interactive projects built by combining deep PMO expertise with modern AI tooling. Each piece is engineered to eliminate friction and deliver insight.</div>', unsafe_allow_html=True)
 
 ai_projects = [
     {
@@ -400,10 +437,10 @@ st.markdown('<div class="ai-cards-grid">', unsafe_allow_html=True)
 for proj in ai_projects:
     st.markdown(f"""
     <div class="fun-ai-card">
-        <div style="font-size: 1.5rem; font-weight: 800; color: #ffffff; margin-bottom: 0.8rem;">{proj["title"]}</div>
-        <div style="font-size: 1.05rem; color: #94a3b8; line-height: 1.6; margin-bottom: 2rem;">{proj["desc"]}</div>
-        <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #a855f7; font-weight: 700; margin-bottom: 0.4rem;">Tech Specs</div>
-        <div style="color: #f8fafc; font-weight: 600;">{proj["tech"]}</div>
+        <div class="ai-card-title">{proj["title"]}</div>
+        <div class="ai-card-desc">{proj["desc"]}</div>
+        <div class="ai-card-tech-label">Tech Specs</div>
+        <div class="ai-card-tech">{proj["tech"]}</div>
     </div>
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
