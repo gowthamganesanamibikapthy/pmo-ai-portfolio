@@ -1,297 +1,411 @@
 import streamlit as st
 
 # 1. Page Config
-st.set_page_config(page_title="Gowtham Ganesan | Cinematic Portfolio", page_icon="🍏", layout="wide")
+st.set_page_config(page_title="Gowtham Ganesan |  TPM & RM Portfolio", page_icon="🧶", layout="wide")
 
-# 2. Cinematic CSS & Apple Scroll-Driven Keyframes
+# 2. Playful Custom CSS, Puppet-String Pull Physics & Falling Software Artefacts
 st.markdown("""
     <style>
-    /* Global Apple Dark Mode Aesthetics */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap');
+
     .stApp {
-        background-color: #000000;
-        color: #f5f5f7;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #08080a;
+        color: #f8fafc;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        overflow-x: hidden;
     }
     
     header {visibility: hidden;}
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 
-    /* Hero Section */
-    .hero-container {
-        padding: 8rem 2rem 4rem 2rem;
-        text-align: center;
-        max-width: 1000px;
-        margin: 0 auto;
-    }
-    
-    .hero-title {
-        font-size: 5.5rem;
-        font-weight: 700;
-        letter-spacing: -0.03em;
-        line-height: 1.05;
-        background: linear-gradient(180deg, #ffffff 0%, #a1a1a6 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 1.5rem;
-    }
-    
-    .hero-subtitle {
-        font-size: 1.8rem;
-        color: #86868b;
-        font-weight: 400;
-        line-height: 1.4;
-        letter-spacing: -0.01em;
+    /* PUPPET STRINGS & PERSON OF COLOR SYMBOLISM FIXED TO TOP */
+    .puppet-master-rig {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 999;
+        overflow: hidden;
     }
 
-    /* Apple-Style Cinematic Story Chapters */
-    .story-chapter {
-        background: rgba(28, 28, 30, 0.6);
-        backdrop-filter: blur(40px);
-        -webkit-backdrop-filter: blur(40px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 36px;
-        padding: 4.5rem;
-        margin: 0 auto 8rem auto;
-        max-width: 1100px;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    /* Vertical Control Strings coming down from above */
+    .string-line {
+        position: absolute;
+        top: 0;
+        width: 2px;
+        background: linear-gradient(180deg, rgba(244, 114, 182, 0.8) 0%, rgba(78, 205, 196, 0.4) 60%, transparent 100%);
+        height: 100vh;
+        animation: stringPullEffect 4s ease-in-out infinite alternate;
+    }
+    .string-1 { left: 15%; animation-delay: 0s; }
+    .string-2 { left: 50%; animation-delay: 1.2s; width: 3px; background: linear-gradient(180deg, rgba(168, 85, 247, 0.9) 0%, rgba(255, 230, 109, 0.3) 70%, transparent 100%); }
+    .string-3 { left: 85%; animation-delay: 2.4s; }
+
+    @keyframes stringPullEffect {
+        0% { transform: scaleY(0.97) translateY(-5px); }
+        100% { transform: scaleY(1.03) translateY(5px); }
+    }
+
+    /* Puppet Master Silhouette / Hands from Above Symbolizing POC Leadership & Orchestration */
+    .puppeteer-silhouette {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 320px;
+        height: 110px;
+        background: radial-gradient(circle, rgba(168, 85, 247, 0.25) 0%, rgba(244, 114, 182, 0.08) 50%, transparent 80%);
+        border-bottom-left-radius: 160px;
+        border-bottom-right-radius: 160px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        padding-bottom: 10px;
+        border-bottom: 2px dashed rgba(244, 114, 182, 0.4);
+    }
+    .puppeteer-hands-icon {
+        font-size: 1.8rem;
+        animation: handsTug 2s ease-in-out infinite alternate;
+        filter: drop-shadow(0 0 10px rgba(244, 114, 182, 0.8));
+    }
+    @keyframes handsTug {
+        0% { transform: translateY(0px) rotate(-2deg); }
+        100% { transform: translateY(8px) rotate(2deg); }
+    }
+
+    /* FLOATING RELEASING SOFTWARE ARTEFACTS & PAPERS (Simulating PM/RM Release Drops) */
+    @keyframes releaseDrift {
+        0% { transform: translateY(-50px) rotate(0deg) scale(0.8); opacity: 0; }
+        20% { opacity: 0.8; }
+        80% { opacity: 0.8; }
+        100% { transform: translateY(105vh) rotate(360deg) scale(1.1); opacity: 0; }
+    }
+
+    .floating-artefact {
+        position: fixed;
+        pointer-events: none;
+        z-index: 998;
+        font-family: monospace;
+        font-weight: 700;
+        padding: 0.5rem 1rem;
+        border-radius: 12px;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        animation: releaseDrift linear infinite;
+    }
+    .art-1 { top: -10%; left: 8%; background: rgba(78, 205, 196, 0.15); border: 1px solid #4ECDC4; color: #4ECDC4; animation-duration: 9s; animation-delay: 0s; }
+    .art-2 { top: -10%; left: 75%; background: rgba(244, 114, 182, 0.15); border: 1px solid #f472b6; color: #f472b6; animation-duration: 12s; animation-delay: 3s; }
+    .art-3 { top: -10%; left: 35%; background: rgba(255, 230, 109, 0.15); border: 1px solid #FFE66D; color: #FFE66D; animation-duration: 7s; animation-delay: 5s; }
+    .art-4 { top: -10%; left: 88%; background: rgba(168, 85, 247, 0.15); border: 1px solid #a855f7; color: #c084fc; animation-duration: 10s; animation-delay: 1.5s; }
+
+    /* Hero Section */
+    .playful-hero-container {
+        padding: 9rem 1rem 4rem 1rem;
+        text-align: center;
+        max-width: 950px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+    
+    .playful-title {
+        font-size: 4.5rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        background: linear-gradient(135deg, #FF6B6B 0%, #4ECDC4 40%, #a855f7 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: hueShift 8s infinite alternate;
+        margin-bottom: 1.5rem;
+    }
+
+    @keyframes hueShift {
+        0% { filter: hue-rotate(0deg); }
+        100% { filter: hue-rotate(360deg); }
+    }
+    
+    .playful-subtitle {
+        font-size: 1.5rem;
+        color: #94a3b8;
+        font-weight: 500;
+        line-height: 1.5;
+    }
+
+    /* Fun Chapter Cards */
+    .fun-chapter-card {
+        background: rgba(20, 20, 30, 0.75);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 2px solid rgba(255, 255, 255, 0.08);
+        border-radius: 32px;
+        padding: 4rem;
+        margin: 0 auto 5rem auto;
+        max-width: 1050px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        z-index: 2;
         
-        /* Native Browser Scroll-Driven Animations */
         opacity: 0;
-        transform: translateY(100px) scale(0.94);
-        animation: appleCinematicReveal linear forwards;
+        transform: translateY(80px) scale(0.95);
+        animation: playfulReveal linear forwards;
         animation-timeline: view();
         animation-range: entry 5% cover 30%;
     }
     
-    @keyframes appleCinematicReveal {
+    .fun-chapter-card:hover {
+        transform: translateY(-8px) scale(1.01);
+        border-color: #f472b6;
+        box-shadow: 0 30px 70px rgba(244, 114, 182, 0.25);
+    }
+
+    @keyframes playfulReveal {
         to {
             opacity: 1;
             transform: translateY(0) scale(1);
         }
     }
 
-    .chapter-eyebrow {
-        font-size: 0.95rem;
+    .card-badge-top {
+        display: inline-block;
+        background: rgba(244, 114, 182, 0.15);
+        color: #f472b6;
+        border: 1px solid rgba(244, 114, 182, 0.4);
+        padding: 0.4rem 1.2rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 3px;
-        color: #2997ff;
-        font-weight: 600;
-        margin-bottom: 1rem;
-    }
-    
-    .chapter-title {
-        font-size: 2.8rem;
-        font-weight: 600;
-        color: #f5f5f7;
-        letter-spacing: -0.02em;
-        margin-bottom: 0.5rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 1.2rem;
     }
 
-    .chapter-timeline {
+    .card-main-title {
+        font-size: 2.6rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 0.4rem;
+    }
+
+    .card-time-role {
         font-size: 1.15rem;
-        color: #86868b;
-        font-weight: 500;
-        margin-bottom: 3rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 1.5rem;
+        color: #4ECDC4;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
     }
 
-    /* Immersive Story Paragraphs */
-    .story-prose {
-        font-size: 1.25rem;
-        color: #d2d2d7;
+    .card-story-text {
+        font-size: 1.2rem;
+        color: #cbd5e1;
         line-height: 1.8;
-        margin-bottom: 2rem;
+        margin-bottom: 1.8rem;
         font-weight: 400;
     }
-    
-    .story-prose strong {
-        color: #ffffff;
-        font-weight: 600;
-    }
 
-    /* Highlight Pull-Quotes */
-    .story-quote {
-        font-size: 1.4rem;
-        color: #2997ff;
+    .card-quote-box {
+        background: rgba(244, 114, 182, 0.05);
+        border-left: 4px solid #f472b6;
+        padding: 1.2rem 1.5rem;
+        border-radius: 0 16px 16px 0;
+        color: #FFE66D;
         font-style: italic;
-        border-left: 3px solid #2997ff;
-        padding-left: 1.5rem;
-        margin: 2.5rem 0;
-        line-height: 1.5;
+        font-size: 1.25rem;
+        margin: 2rem 0;
+        font-weight: 500;
     }
 
-    /* Skill Badge Grid */
-    .badge-wrap {
+    .pill-box {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.75rem;
-        margin-top: 2.5rem;
-    }
-    
-    .apple-pill {
-        background: rgba(255, 255, 255, 0.05);
-        color: #f5f5f7;
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        padding: 0.6rem 1.4rem;
-        border-radius: 30px;
-        font-size: 0.95rem;
-        font-weight: 500;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-    }
-    
-    .apple-pill:hover {
-        background: rgba(41, 151, 255, 0.15);
-        border-color: rgba(41, 151, 255, 0.4);
-        color: #2997ff;
-        transform: translateY(-3px);
+        gap: 0.8rem;
+        margin-top: 2rem;
     }
 
-    /* AI Vibe Coding Grid Section */
-    .ai-section-title {
-        font-size: 4rem;
-        font-weight: 700;
+    .fun-pill {
+        background: rgba(255, 255, 255, 0.04);
+        color: #f8fafc;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        padding: 0.6rem 1.3rem;
+        border-radius: 50px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .fun-pill:hover {
+        background: #f472b6;
+        color: #08080a;
+        border-color: #f472b6;
+        transform: translateY(-4px) rotate(-1deg);
+        box-shadow: 0 10px 20px rgba(244, 114, 182, 0.3);
+    }
+
+    /* AI Vibe Coding Zone */
+    .ai-zone-title {
+        font-size: 3.5rem;
+        font-weight: 800;
         text-align: center;
-        margin: 8rem 0 1.5rem 0;
-        letter-spacing: -0.02em;
-        background: linear-gradient(180deg, #fff 0%, #a855f7 100%);
+        margin: 8rem 0 1rem 0;
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        position: relative;
+        z-index: 2;
     }
 
-    .ai-grid {
+    .ai-cards-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 2.5rem;
-        max-width: 1100px;
+        max-width: 1050px;
         margin: 0 auto;
+        position: relative;
+        z-index: 2;
     }
 
-    .ai-card {
-        background: linear-gradient(145deg, rgba(28,28,30,0.7) 0%, rgba(15,15,18,0.9) 100%);
-        border: 1px solid rgba(168, 85, 247, 0.25);
-        border-radius: 30px;
+    .fun-ai-card {
+        background: linear-gradient(145deg, rgba(20,20,30,0.85) 0%, rgba(10,10,15,0.95) 100%);
+        border: 2px solid rgba(168, 85, 247, 0.25);
+        border-radius: 28px;
         padding: 3rem;
         transition: all 0.4s ease;
     }
-    
-    .ai-card:hover {
-        transform: translateY(-8px);
-        border-color: rgba(168, 85, 247, 0.8);
-        box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
+
+    .fun-ai-card:hover {
+        transform: translateY(-10px);
+        border-color: #a855f7;
+        box-shadow: 0 20px 40px rgba(168, 85, 247, 0.3);
     }
     </style>
+
+    <!-- FIXED OVERLAY RIG: Puppet-Strings & POC Puppeteer Symbolism from Above -->
+    <div class="puppet-master-rig">
+        <div class="puppeteer-silhouette">
+            <div class="puppeteer-hands-icon">✊🏽🧵✨</div>
+        </div>
+        <div class="string-line string-1"></div>
+        <div class="string-line string-2"></div>
+        <div class="string-line string-3"></div>
+    </div>
+
+    <!-- FLOATING SOFTWARE RELEASES & ARTEFACTS FALLING AS WE SCROLL -->
+    <div class="floating-artefact art-1">📄 Release_Note_v1.0.pdf</div>
+    <div class="floating-artefact art-2">🚀 Dynamics365_GoLive.pkg</div>
+    <div class="floating-artefact art-3">💡 PMO_Governance_v2.json</div>
+    <div class="floating-artefact art-4">⚡ Streamlit_App_v4.5.py</div>
 """, unsafe_allow_html=True)
 
 # 3. Hero Section
 st.markdown("""
-    <div class="hero-container">
-        <div class="hero-title">The Evolution of Delivery.</div>
-        <div class="hero-subtitle">An immersive, cinematic journey through 8+ years of engineering enterprise scale, program governance, and AI-driven automation.</div>
+    <div class="playful-hero-container">
+        <div class="playful-title">Pulling the Strings of Enterprise Delivery.</div>
+        <div class="playful-subtitle">Steering complex systems from above with precision. Blending 8+ years of robust Program & Release Management governance with high-energy AI vibe-coding.</div>
     </div>
 """, unsafe_allow_html=True)
 
-# 4. Cinematic Story Chapters Data
+# 4. Content Chapters
 chapters = [
     {
-        "eyebrow": "Chapter 01 • The Genesis",
-        "title": "The Foundation of Discipline",
+        "badge": "Level 01 • The Foundation",
+        "title": "Controlling the Control Room",
         "role": "Release & Deployment Manager | Cognizant",
         "timeline": "March 2016 – December 2018",
-        "prose_1": "My career started in the engine room of enterprise IT operations. Managing high-stakes multi-environment builds and strict Change Advisory Board (CAB) workflows across ServiceNow taught me a foundational truth: <strong>zero-incident releases are never a matter of luck</strong>—they are the direct byproduct of ruthless procedural discipline.",
-        "quote": "Standardizing deployment playbooks taught me that rigid processes create the freedom to scale securely.",
-        "prose_2": "By authoring comprehensive release implementation guides and orchestrating rigorous pre-deployment validations, I gained the operational rigor needed to eliminate critical post-implementation downtime entirely, setting the stage for larger enterprise responsibilities.",
-        "skills": ["CAB Governance", "ServiceNow", "ITIL Framework", "Environment Management", "Defect Triaging"]
+        "story": "Every great production is orchestrated from above. Managing high-stakes multi-environment builds and strict Change Advisory Board (CAB) protocols taught me how to keep every operational string tightly controlled for zero critical downtime.",
+        "quote": "Absolute control over underlying release mechanics creates total operational freedom.",
+        "story_2": "Standardized core rollout playbooks, securing absolute compliance and zero critical post-release incidents.",
+        "skills": ["CAB Governance", "ServiceNow", "ITIL Framework", "Release Tracking", "Defect Shielding"]
     },
     {
-        "eyebrow": "Chapter 02 • The Orchestrator",
-        "title": "Synchronizing Chaos at Scale",
+        "badge": "Level 02 • The Orchestrator",
+        "title": "Synchronizing Large-Scale Systems",
         "role": "Technical Project Manager | Guidewire Software",
         "timeline": "June 2020 – September 2024",
-        "prose_1": "Stepping into enterprise InsuranceSuite implementations meant zooming out from individual release windows to manage the entire Software Development Life Cycle (SDLC). Cross-functional friction between development, QA, and business workstreams was constant—and solving it required structural harmonization.",
-        "quote": "True program management isn't just tracking tasks; it's aligning human intent across complex technical dependencies.",
-        "prose_2": "By facilitating Scrum-of-Scrums and embedding structured deployment checklists directly into Jira, I learned how to transform chaotic cross-team dependencies into predictable release trains. This systemic alignment successfully drove down lower-environment downtime by 15%.",
-        "skills": ["Guidewire InsuranceSuite", "Scrum-of-Scrums", "Jira & Confluence", "Go/No-Go Gates", "Root Cause Analysis"]
+        "prose": " Scaling up meant handling complex multi-tiered enterprise implementations across full SDLC cycles. Pulling the strings between development, QA, and business stakeholders required turning chaotic dependencies into smooth release cadences.",
+        "quote": "Great project management pulls all the right technical threads together into a single rhythm.",
+        "story_2": "Through disciplined Scrum-of-Scrums alignment and structured Jira deployment gating, I cut lower-environment downtime by 15%.",
+        "skills": ["Guidewire InsuranceSuite", "Scrum-of-Scrums", "Jira & Confluence", "Go/No-Go Gates", "RCA Analysis"]
     },
     {
-        "eyebrow": "Chapter 03 • The Architect",
-        "title": "Engineering Frameworks from Scratch",
+        "badge": "Level 03 • The Architect",
+        "title": "Building Custom PMO Frameworks",
         "role": "Senior PMO & Implementation Lead | Folens & Qualtrics",
         "timeline": "October 2024 – January 2026",
-        "prose_1": "With delivery mechanics mastered, the frontier shifted to architectural design. At Folens and Qualtrics, I was tasked with engineering centralized PMO frameworks from the ground up—balancing strict Out-of-the-Box SaaS configurations with custom ERP solutions like Microsoft Dynamics 365 Business Central.",
-        "quote": "Building custom PMO frameworks transformed how executives view delivery: shifting it from a reactive cost center to a predictive engine.",
-        "prose_2": "By optimizing milestone execution and driving centralized documentation portals via Coda, I led Phase 1 rollouts for 80+ users four weeks ahead of schedule while achieving a 30% boost in overall business process automation.",
-        "skills": ["Dynamics 365", "PMO Architecture", "Coda", "UAT Orchestration", "Stakeholder Alignment"]
+        "prose": "At this stage, the mission shifted to building brand-new delivery architectures from scratch. Managing $650K ERP rollouts (Dynamics 365) and centralized Coda resource portals meant engineering systems that work seamlessly for both users and executives.",
+        "quote": "A master architect doesn't just manage the pieces; they design how the whole ecosystem moves.",
+        "story_2": "Delivered Phase 1 rollouts four weeks ahead of schedule and automated business workflows by 30%.",
+        "skills": ["Dynamics 365", "PMO Architecture", "Coda Portals", "UAT Mastery", "Stakeholder Sync"]
     },
     {
-        "eyebrow": "Chapter 04 • The Horizon",
-        "title": "AI-Powered Program Management",
-        "role": "AI Tooling Specialist & Vibe Coder | Independent R&D",
+        "badge": "Level 04 • The Sandbox",
+        "title": "AI Vibe-Coding & Rapid Innovation",
+        "role": "AI Tooling Specialist | Independent R&D",
         "timeline": "February 2026 – Present",
-        "prose_1": "The modern PMO cannot run on spreadsheets and manual status reports alone. Today, I combine my 8 years of foundational delivery governance with advanced AI vibe-coding and natural language prompt architecture.",
-        "quote": "The future belongs to builders who can bridge rigorous enterprise governance with rapid AI prototyping.",
-        "prose_2": "By designing custom Streamlit web dashboards, experimenting with Model Context Protocol (MCP) servers, and deploying autonomous LLM agents, I eliminate manual PMO reporting overhead in real time.",
-        "skills": ["Vibe Coding", "Streamlit Dev", "MCP Agents", "Python Automation", "LLM Integration"]
+        "prose": "Combining 8 years of solid enterprise governance with modern AI-assisted prototyping tools. I build interactive web apps, dashboards and automated tooling to eliminate manual PMO busywork entirely.",
+        "quote": "The future belongs to builders who can bridge rigorous governance with rapid, animated execution.",
+        "story_2": "Deploying custom Python/Streamlit dashboards, prompt-engineered pipelines, and dynamic micro-apps.",
+        "skills": ["Vibe Coding", "Streamlit Apps", "MCP Agents", "Python Automation", "LLM Tooling"]
     }
 ]
 
-# Render Cinematic Chapters
+# Render Chapters
 for ch in chapters:
-    badges_html = "".join([f'<span class="apple-pill">{skill}</span>' for skill in ch["skills"]])
+    pills_html = "".join([f'<span class="fun-pill">{skill}</span>' for skill in ch["skills"]])
     
     st.markdown(f"""
-    <div class="story-chapter">
-        <div class="chapter-eyebrow">{ch["eyebrow"]}</div>
-        <div class="chapter-title">{ch["title"]}</div>
-        <div class="chapter-timeline">{ch["role"]} &nbsp;|&nbsp; {ch["timeline"]}</div>
+    <div class="fun-chapter-card">
+        <div class="card-badge-top">{ch["badge"]}</div>
+        <div class="card-main-title">{ch["title"]}</div>
+        <div class="card-time-role">{ch["role"]} &nbsp;•&nbsp; {ch["timeline"]}</div>
         
-        <div class="story-prose">{ch["prose_1"]}</div>
+        <div class="card-story-text">{ch.get("story", ch.get("prose"))}</div>
         
-        <div class="story-quote">"{ch["quote"]}"</div>
+        <div class="card-quote-box">"{ch["quote"]}"</div>
         
-        <div class="story-prose">{ch["prose_2"]}</div>
+        <div class="card-story-text">{ch["story_2"]}</div>
         
-        <div class="badge-wrap">
-            {badges_html}
+        <div class="pill-box">
+            {pills_html}
         </div>
     </div>
     """, unsafe_allow_html=True)
 
-# 5. AI & Vibe Coding Showcase Section
-st.markdown('<div class="ai-section-title">Applied AI & Vibe Coding.</div>', unsafe_allow_html=True)
-st.markdown('<p style="text-align: center; color: #86868b; max-width: 750px; margin: 0 auto 5rem auto; font-size: 1.3rem; line-height: 1.5;">Showcasing active applications built by merging enterprise delivery experience with cutting-edge AI prototyping workflows.</p>', unsafe_allow_html=True)
+# 5. AI Vibe Coding Showcase Section
+st.markdown('<div class="ai-zone-title">AI Vibe-Coding Zone.</div>', unsafe_allow_html=True)
+st.markdown('<p style="text-align: center; color: #94a3b8; max-width: 750px; margin: 0 auto 5rem auto; font-size: 1.25rem; position: relative; z-index: 2;">Interactive projects built by combining deep delivery management knowledge with fast, playful AI prototyping tools.</p>', unsafe_allow_html=True)
 
 ai_projects = [
     {
-        "title": "Interactive Streamlit Portfolios",
-        "desc": "Engineered this very web application using Python and Streamlit, featuring custom CSS keyframe animations, glassmorphism design layouts, and dynamic state transitions.",
-        "tech": "Python • Streamlit • CSS3"
+        "title": "Interactive Streamlit Dashboards",
+        "desc": "Designed and shipped this high-performance app featuring custom CSS layout for projects whiwh revolve  around complex Cusomter onboarding and custom toolkits for the entire cycle of any domains. Leveraged advanced physics, animated text gradients, and smooth scroll triggers majority of the way and trying to be avoind  as  a meat proxy.",
+        "tech": "Python • Streamlit • Advanced CSS"
     },
     {
-        "title": "Automated PMO Governance Agents",
-        "desc": "Built workflow helpers using Model Context Protocol (MCP) to instantly parse raw project metrics, log defects, and auto-generate executive status report documents.",
-        "tech": "MCP Servers • LLMs • Automation"
+        "title": "Automated PMO Governance Bots",
+        "desc": "Built smart script assistants utilizing model context protocols to rapidly parse project health metrics and structure executive briefs.",
+        "tech": "MCP Agents • LLM Scripting"
     },
     {
         "title": "Agile Defect Triage Simulators",
-        "desc": "Created localized prototype tools leveraging prompt engineering to streamline root-cause analysis reporting and accelerate lower-environment release validation.",
-        "tech": "Prompt Engineering • Python Scripting"
+        "desc": "Created fast prototype utilities driven by prompt engineering to accelerate lower-environment code validations and tracking.",
+        "tech": "Prompt Architecture • Automation"
     }
 ]
 
-st.markdown('<div class="ai-grid">', unsafe_allow_html=True)
+st.markdown('<div class="ai-cards-grid">', unsafe_allow_html=True)
 for proj in ai_projects:
     st.markdown(f"""
-    <div class="ai-card">
-        <div style="font-size: 1.6rem; font-weight: 600; color: #ffffff; margin-bottom: 1rem;">{proj["title"]}</div>
-        <div style="font-size: 1.1rem; color: #94a3b8; line-height: 1.6; margin-bottom: 2rem;">{proj["desc"]}</div>
-        <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: #a855f7; font-weight: 600; margin-bottom: 0.5rem;">Tech Stack</div>
-        <div style="color: #f5f5f7; font-weight: 500; font-size: 1rem;">{proj["tech"]}</div>
+    <div class="fun-ai-card">
+        <div style="font-size: 1.5rem; font-weight: 800; color: #ffffff; margin-bottom: 0.8rem;">{proj["title"]}</div>
+        <div style="font-size: 1.05rem; color: #94a3b8; line-height: 1.6; margin-bottom: 2rem;">{proj["desc"]}</div>
+        <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #a855f7; font-weight: 700; margin-bottom: 0.4rem;">Tech Specs</div>
+        <div style="color: #f8fafc; font-weight: 600;">{proj["tech"]}</div>
     </div>
     """, unsafe_allow_html=True)
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Footer Spacing
-st.markdown('<div style="height: 180px;"></div>', unsafe_allow_html=True)
+st.markdown('<div style="height: 150px;"></div>', unsafe_allow_html=True)
