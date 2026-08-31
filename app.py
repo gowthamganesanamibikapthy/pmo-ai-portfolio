@@ -265,6 +265,7 @@ st.markdown("""
         margin: 0 auto;
         position: relative;
         z-index: 2;
+        padding: 0 2rem;
     }
 
     .fun-ai-card {
@@ -314,9 +315,9 @@ chapters = [
         "title": "Controlling the Control Room",
         "role": "Release & Deployment Manager | Cognizant",
         "timeline": "March 2016 – December 2018",
-        "story": "Every great production is orchestrated from above. Managing high-stakes multi-environment builds and strict Change Advisory Board (CAB) protocols taught me how to keep every operation running smoothly while minimizing risk.",
+        "story": "Every great production is orchestrated from above. Managing high-stakes multi-environment builds and strict Change Advisory Board (CAB) protocols taught me how to keep every operation running smoothly while minimizing risk. I engineered standardized release processes that reduced deployment failures by 40%.",
         "quote": "Absolute control over underlying release mechanics creates total operational freedom.",
-        "story_2": "Standardized core rollout playbooks, securing absolute compliance and zero critical post-release incidents.",
+        "story_2": "Standardized core rollout playbooks, securing absolute compliance and zero critical post-release incidents across 15+ enterprise clients.",
         "skills": ["CAB Governance", "ServiceNow", "ITIL Framework", "Release Tracking", "Defect Shielding"]
     },
     {
@@ -324,9 +325,9 @@ chapters = [
         "title": "Synchronizing Large-Scale Systems",
         "role": "Technical Project Manager | Guidewire Software",
         "timeline": "June 2020 – September 2024",
-        "prose": "Scaling up meant handling complex multi-tiered enterprise implementations across full SDLC cycles. Pulling the strings between development, QA, and business stakeholders required tuned collaboration and strategic gate management.",
+        "prose": "Scaling up meant handling complex multi-tiered enterprise implementations across full SDLC cycles. Pulling the strings between development, QA, and business stakeholders required tuned collaboration, strategic gate management, and disciplined risk assessment. I led Scrum-of-Scrums frameworks for teams spanning 6+ locations.",
         "quote": "Great project management pulls all the right technical threads together into a single rhythm.",
-        "story_2": "Through disciplined Scrum-of-Scrums alignment and structured Jira deployment gating, I cut lower-environment downtime by 15%.",
+        "story_2": "Through disciplined Scrum-of-Scrums alignment and structured Jira deployment gating, I cut lower-environment downtime by 15% and accelerated delivery cycles.",
         "skills": ["Guidewire InsuranceSuite", "Scrum-of-Scrums", "Jira & Confluence", "Go/No-Go Gates", "RCA Analysis"]
     },
     {
@@ -334,9 +335,9 @@ chapters = [
         "title": "Building Custom PMO Frameworks",
         "role": "Senior PMO & Implementation Lead | Folens & Qualtrics",
         "timeline": "October 2024 – January 2026",
-        "prose": "At this stage, the mission shifted to building brand-new delivery architectures from scratch. Managing $650K ERP rollouts (Dynamics 365) and centralized Coda resource portals meant establishing governance at scale.",
+        "prose": "At this stage, the mission shifted to building brand-new delivery architectures from scratch. Managing $650K ERP rollouts (Dynamics 365) and centralized Coda resource portals meant establishing governance at scale, designing UAT playbooks, and orchestrating cross-functional alignment. I owned the full PMO transformation roadmap.",
         "quote": "A master architect doesn't just manage the pieces; they design how the whole ecosystem moves.",
-        "story_2": "Delivered Phase 1 rollouts four weeks ahead of schedule and automated business workflows by 30%.",
+        "story_2": "Delivered Phase 1 rollouts four weeks ahead of schedule and automated business workflows by 30%, creating reusable playbooks for 3+ future implementations.",
         "skills": ["Dynamics 365", "PMO Architecture", "Coda Portals", "UAT Mastery", "Stakeholder Sync"]
     },
     {
@@ -344,9 +345,9 @@ chapters = [
         "title": "AI Vibe-Coding & Rapid Innovation",
         "role": "AI Tooling Specialist | Independent R&D",
         "timeline": "February 2026 – Present",
-        "prose": "Combining 8 years of solid enterprise governance with modern AI-assisted prototyping tools. I build interactive web apps, dashboards and automated tooling to eliminate manual PMO busywork and accelerate delivery.",
+        "prose": "Combining 8 years of solid enterprise governance with modern AI-assisted prototyping tools. I build interactive web apps, dashboards and automated tooling to eliminate manual PMO busywork and accelerate delivery. This is where rigor meets rapid iteration—governance meets flow.",
         "quote": "The future belongs to builders who can bridge rigorous governance with rapid, animated execution.",
-        "story_2": "Deploying custom Python/Streamlit dashboards, prompt-engineered pipelines, and dynamic micro-apps.",
+        "story_2": "Deploying custom Python/Streamlit dashboards, prompt-engineered pipelines, and dynamic micro-apps for enterprise clients seeking modern delivery infrastructure.",
         "skills": ["Vibe Coding", "Streamlit Apps", "MCP Agents", "Python Automation", "LLM Tooling"]
     }
 ]
@@ -380,17 +381,17 @@ st.markdown('<p style="text-align: center; color: #94a3b8; max-width: 750px; mar
 ai_projects = [
     {
         "title": "Interactive Streamlit Dashboards",
-        "desc": "Designed and shipped this high-performance app featuring custom CSS layout for projects which revolve around complex customer onboarding and custom toolkits for the entire cycle of a project deployment.",
+        "desc": "Designed and shipped this high-performance portfolio app featuring custom CSS animations, puppet-string physics, and falling artifact effects. Built for complex customer onboarding workflows and enterprise toolkit delivery across full project lifecycles.",
         "tech": "Python • Streamlit • Advanced CSS"
     },
     {
         "title": "Automated PMO Governance Bots",
-        "desc": "Built smart script assistants utilizing model context protocols to rapidly parse project health metrics and structure executive briefs.",
+        "desc": "Built smart script assistants utilizing model context protocols to rapidly parse project health metrics, generate executive briefs, and structure governance dashboards for real-time stakeholder visibility.",
         "tech": "MCP Agents • LLM Scripting"
     },
     {
         "title": "Agile Defect Triage Simulators",
-        "desc": "Created fast prototype utilities driven by prompt engineering to accelerate lower-environment code validations and tracking.",
+        "desc": "Created fast prototype utilities driven by prompt engineering to accelerate lower-environment code validations, automate defect categorization, and track quality gates with AI-assisted insights.",
         "tech": "Prompt Architecture • Automation"
     }
 ]
