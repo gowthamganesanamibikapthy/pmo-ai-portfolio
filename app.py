@@ -1,4 +1,5 @@
 import streamlit as st
+import textwrap
 
 st.set_page_config(
     page_title="Gowtham Ganesan | Executive Portfolio & Hub",
@@ -7,7 +8,7 @@ st.set_page_config(
 )
 
 # Advanced CSS with High-End Special Effects & Animations
-st.markdown("""
+st.markdown(textwrap.dedent("""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
@@ -22,7 +23,6 @@ st.markdown("""
     #MainMenu {visibility: hidden;}
     footer {visibility: hidden;}
 
-    /* Glowing Ambient Background Orbs */
     .ambient-glow-1 {
         position: fixed;
         top: 10%;
@@ -56,7 +56,6 @@ st.markdown("""
         100% { transform: translateY(-30px) scale(1.1); }
     }
 
-    /* Master Glass Shell */
     .master-glass-shell {
         background: rgba(14, 14, 22, 0.75);
         backdrop-filter: blur(30px);
@@ -69,15 +68,8 @@ st.markdown("""
         box-shadow: 0 30px 100px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
         position: relative;
         z-index: 1;
-        animation: shellFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
 
-    @keyframes shellFadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Profile Header */
     .profile-header {
         display: flex;
         justify-content: space-between;
@@ -110,7 +102,7 @@ st.markdown("""
         display: inline-flex;
         align-items: center;
         gap: 10px;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s ease;
         box-shadow: 0 10px 25px rgba(14, 165, 233, 0.2);
     }
     
@@ -121,23 +113,13 @@ st.markdown("""
         transform: translateY(-3px);
     }
 
-    /* Encapsulated Release Cloud */
     .release-cloud {
         background: linear-gradient(135deg, rgba(20, 20, 32, 0.8) 0%, rgba(10, 10, 18, 0.95) 100%);
         border: 1px solid rgba(78, 205, 196, 0.3);
         border-radius: 28px;
         padding: 2.5rem;
         margin-bottom: 3rem;
-        box-shadow: inset 0 0 30px rgba(78, 205, 196, 0.05), 0 15px 35px rgba(0,0,0,0.4);
         position: relative;
-        overflow: hidden;
-    }
-
-    .release-cloud::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; height: 2px;
-        background: linear-gradient(90deg, transparent, #4ECDC4, transparent);
     }
 
     .cloud-title {
@@ -147,9 +129,6 @@ st.markdown("""
         text-transform: uppercase;
         letter-spacing: 2px;
         margin-bottom: 1.5rem;
-        display: flex;
-        align-items: center;
-        gap: 10px;
     }
 
     .artifact-grid {
@@ -167,33 +146,14 @@ st.markdown("""
         font-family: monospace;
         font-size: 0.92rem;
         font-weight: 600;
-        transition: all 0.3s ease;
     }
 
-    .artifact-pill:hover {
-        background: #4ECDC4;
-        color: #030305;
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 8px 20px rgba(78, 205, 196, 0.4);
-    }
-
-    /* Dark Skill Cloud */
     .dark-skill-cloud {
         background: linear-gradient(135deg, rgba(12, 8, 20, 0.95) 0%, rgba(4, 4, 10, 0.99) 100%);
         border: 1px solid rgba(168, 85, 247, 0.4);
         border-radius: 32px;
         padding: 3.5rem;
         margin-bottom: 4rem;
-        box-shadow: 0 25px 60px rgba(168, 85, 247, 0.15);
-        position: relative;
-        overflow: hidden;
-    }
-
-    .dark-skill-cloud::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; height: 2px;
-        background: linear-gradient(90deg, transparent, #a855f7, transparent);
     }
 
     .dark-cloud-title {
@@ -201,9 +161,6 @@ st.markdown("""
         font-weight: 800;
         color: #e9d5ff;
         margin-bottom: 2rem;
-        display: flex;
-        align-items: center;
-        gap: 12px;
     }
 
     .skill-pillars-grid {
@@ -217,15 +174,6 @@ st.markdown("""
         border: 1px solid rgba(168, 85, 247, 0.2);
         border-radius: 24px;
         padding: 2.5rem;
-        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-        position: relative;
-    }
-
-    .skill-pillar-card:hover {
-        border-color: #a855f7;
-        transform: translateY(-8px);
-        background: rgba(168, 85, 247, 0.06);
-        box-shadow: 0 20px 45px rgba(168, 85, 247, 0.25);
     }
 
     .pillar-name {
@@ -241,21 +189,12 @@ st.markdown("""
         line-height: 1.7;
     }
 
-    /* Chapter Cards */
     .chapter-box {
         background: rgba(18, 18, 28, 0.7);
         border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 28px;
         padding: 3rem;
         margin-bottom: 2.5rem;
-        transition: all 0.4s ease;
-    }
-
-    .chapter-box:hover {
-        border-color: rgba(244, 114, 182, 0.4);
-        transform: translateY(-5px);
-        box-shadow: 0 20px 50px rgba(244, 114, 182, 0.15);
-        background: rgba(22, 22, 35, 0.9);
     }
 
     .chapter-badge {
@@ -272,7 +211,6 @@ st.markdown("""
         font-weight: 800;
         color: #ffffff;
         margin-bottom: 0.4rem;
-        letter-spacing: -0.02em;
     }
 
     .chapter-role {
@@ -286,21 +224,18 @@ st.markdown("""
         font-size: 1.05rem;
         color: #cbd5e1;
         line-height: 1.8;
-        margin-bottom: 1.5rem;
     }
     </style>
 
     <div class="ambient-glow-1"></div>
     <div class="ambient-glow-2"></div>
-""", unsafe_allow_html=True)
+"""), unsafe_allow_html=True)
 
-# Native Streamlit Tabs for Clean Rendering and Reliability
 tab_portfolio, tab_codebase = st.tabs(["✨ Cinematic Portfolio & Journey", "💻 Codebase & GitHub Hub"])
 
 with tab_portfolio:
-    st.markdown("""
+    st.markdown(textwrap.dedent("""
     <div class="master-glass-shell">
-        <!-- Profile Header -->
         <div class="profile-header">
             <div>
                 <h1 class="name-title">Gowtham Ganesan</h1>
@@ -315,7 +250,6 @@ with tab_portfolio:
             </div>
         </div>
 
-        <!-- Release Cloud Component -->
         <div class="release-cloud">
             <div class="cloud-title">☁️ Active Software Release Atmosphere</div>
             <div class="artifact-grid">
@@ -327,7 +261,6 @@ with tab_portfolio:
             </div>
         </div>
 
-        <!-- Dark Cloud for Top 3 Sophisticated Skills -->
         <div class="dark-skill-cloud">
             <div class="dark-cloud-title">🌩️ Core Expertise Matrix</div>
             <div class="skill-pillars-grid">
@@ -346,9 +279,8 @@ with tab_portfolio:
             </div>
         </div>
 
-        <!-- Career Evolution Chapters -->
         <div>
-            <h2 style="font-size: 2.5rem; font-weight: 800; color: #ffffff; margin-bottom: 2.5rem; text-align: center; letter-spacing: -0.02em;">Career Evolution Chapters</h2>
+            <h2 style="font-size: 2.5rem; font-weight: 800; color: #ffffff; margin-bottom: 2.5rem; text-align: center;">Career Evolution Chapters</h2>
             
             <div class="chapter-box">
                 <div class="chapter-badge">Chapter 01 • The Foundation</div>
@@ -379,12 +311,12 @@ with tab_portfolio:
             </div>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """), unsafe_allow_html=True)
 
 with tab_codebase:
-    st.markdown("""
+    st.markdown(textwrap.dedent("""
     <div class="master-glass-shell">
-        <h1 style="font-size: 3rem; font-weight: 800; color: #ffffff; margin-bottom: 1.2rem; letter-spacing: -0.03em;">Codebase & GitHub Projects Hub</h1>
+        <h1 style="font-size: 3rem; font-weight: 800; color: #ffffff; margin-bottom: 1.2rem;">Codebase & GitHub Projects Hub</h1>
         <p style="color: #94a3b8; font-size: 1.25rem; margin-bottom: 3.5rem; line-height: 1.6;">
             Explore the underlying source code architecture, repositories, and automated utility scripts that power this portfolio ecosystem.
         </p>
@@ -420,4 +352,4 @@ with tab_codebase:
             </p>
         </div>
     </div>
-    """, unsafe_allow_html=True)
+    """), unsafe_allow_html=True)
