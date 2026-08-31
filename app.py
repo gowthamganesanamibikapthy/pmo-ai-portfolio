@@ -1,250 +1,314 @@
 import streamlit as st
-import os
+import time
 
-# 1. Page Setup for Responsive Design
+# 1. Page Config
 st.set_page_config(
-    page_title="Gowtham Ganesan | TPM & AI PMO Innovator",
+    page_title="Gowtham Ganesan | Interactive Portfolio",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
-# 2. Advanced CSS Layer for Fluid Styling & Animations
+# 2. Comprehensive Animation & Design CSS Engine
 st.markdown("""
     <style>
-    /* Global Imports & Animations */
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
     
     html, body, [class*="css"] {
         font-family: 'Inter', sans-serif;
     }
-    
-    /* Main Canvas Padding */
-    .block-container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        max-width: 95%;
+
+    /* KEYFRAME ANIMATIONS */
+    @keyframes fadeInSlideUp {
+        0% { opacity: 0; transform: translateY(25px); }
+        100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* Glassmorphism Hero Section */
-    .hero-card {
-        background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
-        color: white;
+    @keyframes pulseGlow {
+        0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+        70% { box-shadow: 0 0 15px 8px rgba(37, 99, 235, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+    }
+
+    @keyframes borderBeam {
+        0% { border-color: #2563EB; }
+        50% { border-color: #10B981; }
+        100% { border-color: #2563EB; }
+    }
+
+    /* HERO ANIMATED BANNER */
+    .hero-container {
+        background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
         padding: 2.5rem;
         border-radius: 16px;
-        box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.3);
+        color: white;
+        border: 2px solid #2563EB;
+        animation: borderBeam 6s infinite linear, fadeInSlideUp 0.8s ease-out;
         margin-bottom: 2rem;
     }
-    
+
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.6rem;
         font-weight: 700;
-        color: #F8FAFC;
+        background: linear-gradient(90deg, #3B82F6, #60A5FA);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         margin-bottom: 0.5rem;
     }
 
-    .hero-subtitle {
-        font-size: 1.2rem;
-        color: #94A3B8;
-        margin-bottom: 1.5rem;
-    }
-
-    /* Fluid Glass Cards with Hover State */
-    .custom-card {
+    /* INTERACTIVE HOVER CARDS FOR SKILLS & PROJECTS */
+    .anim-card {
         background: #FFFFFF;
         border: 1px solid #E2E8F0;
         border-radius: 12px;
         padding: 1.5rem;
-        height: 100%;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: fadeInSlideUp 0.6s ease-out;
         box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        margin-bottom: 1rem;
     }
 
-    .custom-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 20px -3px rgba(37, 99, 235, 0.15);
-        border-color: #3B82F6;
+    .anim-card:hover {
+        transform: translateY(-8px) scale(1.01);
+        box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.15);
+        border-color: #2563EB;
     }
 
-    /* Modern Pill Badges */
+    /* ANIMATED BADGES */
     .badge {
         display: inline-block;
         background: #EFF6FF;
         color: #1D4ED8;
         font-weight: 600;
-        font-size: 0.75rem;
-        padding: 0.25rem 0.75rem;
+        font-size: 0.8rem;
+        padding: 0.3rem 0.8rem;
         border-radius: 9999px;
-        margin-right: 0.4rem;
-        margin-bottom: 0.4rem;
+        margin: 0.2rem;
         border: 1px solid #BFDBFE;
+        transition: transform 0.2s ease;
+    }
+    .badge:hover {
+        transform: scale(1.1);
+        background: #2563EB;
+        color: white;
     }
     
-    .badge-alt {
-        background: #F0FDF4;
-        color: #15803D;
-        border-color: #BBF7D0;
+    .badge-ai {
+        background: #ECFDF5;
+        color: #047857;
+        border-color: #A7F3D0;
     }
-
-    /* Metric Cards */
-    .metric-box {
-        background: #FFFFFF;
-        border-left: 4px solid #2563EB;
-        padding: 1rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    .badge-ai:hover {
+        background: #10B981;
+        color: white;
     }
     </style>
 """, unsafe_allow_html=True)
 
-# 3. Sidebar Navigation
-st.sidebar.markdown("### ⚡ Navigation")
-page = st.sidebar.radio("Navigate", ["Executive Dashboard", "AI & PMO Portfolio", "Career Journey"], label_visibility="collapsed")
+# 3. Sidebar Setup
+st.sidebar.title("⚡ Navigation")
+nav = st.sidebar.radio("Go to Section", [
+    "1. Executive Overview", 
+    "2. Interactive Core Competencies", 
+    "3. AI Vibe Coding & Tooling Lab", 
+    "4. Career Experience Timeline"
+])
 
 st.sidebar.markdown("---")
 st.sidebar.markdown("""
-<div style="font-size: 0.9rem; line-height: 1.6;">
-    <b>Gowtham Ganesan Ambikapathy</b><br>
-    📍 Dublin, Ireland<br>
-    🛂 <b>Stamp 4 Visa Holder</b><br>
-    📧 <a href="mailto:gowthamganesanambikapathy@gmail.com">Email Me</a><br>
-    🔗 <a href="https://linkedin.com/in/gowthamganesan" target="_blank">LinkedIn</a> | 
-    💻 <a href="https://github.com/gowthamganesan" target="_blank">GitHub</a>
-</div>
-""", unsafe_allow_html=True)
+**Gowtham Ganesan Ambikapathy**  
+📍 Dublin, Ireland  
+🛂 **Stamp 4 Visa Holder**  
+✉️ [Email Me](mailto:gowthamganesanambikapathy@gmail.com)
+""")
 
-st.sidebar.markdown("---")
+# 4. View Routing & Animations
 
-# Download Resume Button
-resume_path = "assets/Gowtham_Ganesan_Resume.pdf"
-if os.path.exists(resume_path):
-    with open(resume_path, "rb") as pdf_file:
-        st.sidebar.download_button(
-            label="📄 Download Official Resume",
-            data=pdf_file,
-            file_name="Gowtham_Ganesan_Resume.pdf",
-            mime="application/pdf",
-            use_container_width=True
-        )
-
-# 4. View Routing
-
-if page == "Executive Dashboard":
-    # Hero Section
+# --- SECTION 1: EXECUTIVE OVERVIEW ---
+if nav == "1. Executive Overview":
     st.markdown("""
-        <div class="hero-card">
+        <div class="hero-container">
             <div class="hero-title">Gowtham Ganesan Ambikapathy</div>
-            <div class="hero-subtitle">Technical Program Manager | Enterprise Release Lead | AI PMO Builder</div>
-            <span class="badge badge-alt">Stamp 4 Visa (Ireland)</span>
+            <h3 style="margin-top: 0; color: #94A3B8;">Technical Program Manager | Release & Deployment Lead | AI PMO Builder</h3>
+            <span class="badge badge-ai">Stamp 4 Visa (Ireland)</span>
             <span class="badge">8+ Years Experience</span>
             <span class="badge">Dynamics 365 & Guidewire</span>
-            <span class="badge">ITIL & SAFe</span>
+            <span class="badge">Vibe-Coding Practitioner</span>
         </div>
     """, unsafe_allow_html=True)
-    
-    # Overview & Metrics Grid
+
+    st.markdown("### 🎯 Value Delivered Snapshot")
     c1, c2, c3, c4 = st.columns(4)
     with c1:
-        st.markdown("""<div class="metric-box"><span style="color: #64748B; font-size: 0.8rem;">TOTAL EXPERIENCE</span><h2 style="margin:0; color:#0F172A;">8+ Yrs</h2></div>""", unsafe_allow_html=True)
+        st.metric(label="Downtime Reduction", value="15%", delta="Guidewire Infrastructure")
     with c2:
-        st.markdown("""<div class="metric-box"><span style="color: #64748B; font-size: 0.8rem;">DOWNTIME REDUCTION</span><h2 style="margin:0; color:#2563EB;">15%</h2></div>""", unsafe_allow_html=True)
+        st.metric(label="Process Automation", value="30%", delta="Dynamics 365 Rollout")
     with c3:
-        st.markdown("""<div class="metric-box"><span style="color: #64748B; font-size: 0.8rem;">DEFECT RESOLUTION</span><h2 style="margin:0; color:#16A34A;">+25%</h2></div>""", unsafe_allow_html=True)
+        st.metric(label="Defect Resolution", value="25%", delta="Model Office Validation")
     with c4:
-        st.markdown("""<div class="metric-box"><span style="color: #64748B; font-size: 0.8rem;">ERP BUDGET CONTROL</span><h2 style="margin:0; color:#0F172A;">$650K+</h2></div>""", unsafe_allow_html=True)
+        st.metric(label="Post-Release Incidents", value="0", delta="100% Task Completion")
 
-    st.markdown("###")
-    
-    # About Section
-    col_a, col_b = st.columns([2, 1])
-    with col_a:
-        st.markdown("#### Executive Summary")
-        st.write("""
-        Technical Program Manager and Enterprise Release Lead with over 8 years of hands-on experience driving complex ERP (Dynamics 365, Guidewire), 
-        SaaS, and infrastructure programs across global teams[cite: 1]. Expert in structured release governance, environment management, and ITIL-aligned 
-        production readiness[cite: 1]. 
-        
-        A modern practitioner combining traditional delivery frameworks (Agile, Waterfall, Hybrid)[cite: 1] with active AI tooling, vibe coding, 
-        and custom automation scripts to streamline governance and eliminate delivery bottlenecks[cite: 1].
-        """)
-    
-    with col_b:
-        st.markdown("#### Core Technical Stack")
-        st.markdown("""
-        <span class="badge">Python / Streamlit</span>
-        <span class="badge">MCP Agents</span>
-        <span class="badge">Jira / Confluence</span>
-        <span class="badge">ServiceNow</span>
-        <span class="badge">Azure DevOps</span>
-        <span class="badge">CI/CD & Jenkins</span>
-        """, unsafe_allow_html=True)
-
-elif page == "AI & PMO Portfolio":
-    st.markdown("## 📊 AI PMO Applications & Automation")
-    st.caption("Self-directed prototypes and operational tools engineered using LLM APIs, Streamlit, and Model Context Protocol (MCP) servers.")
     st.markdown("---")
-    
-    # Dynamic Card Grid
-    col1, col2 = st.columns(2)
-    
-    with col1:
+    st.markdown("### 💡 What I Bring to the Table")
+    st.write("""
+    I bridge the gap between heavy enterprise delivery frameworks (Agile, SAFe, ITIL) and modern AI automation. 
+    By combining 8+ years of hands-on ERP/SaaS release leadership with natural language AI vibe coding, I eliminate 
+    reporting overhead, streamline defect triaging, and accelerate go-live timelines.
+    """)
+
+# --- SECTION 2: INTERACTIVE CORE COMPETENCIES ---
+elif nav == "2. Interactive Core Competencies":
+    st.markdown("## 🧠 Core Skill Set & Technical Proficiency")
+    st.caption("Select categories below to interactively explore domain mastery and tools.")
+
+    tab1, tab2, tab3, tab4 = st.tabs([
+        "📊 Program Governance", 
+        "🚀 Release & Operations", 
+        "🤖 AI & Technical Stack", 
+        "💼 Enterprise Platforms"
+    ])
+
+    with tab1:
         st.markdown("""
-            <div class="custom-card">
-                <span class="badge">Streamlit + LLM</span>
-                <h3 style="margin-top:0.5rem; color:#0F172A;">AI PMO Executive Dashboard</h3>
-                <p style="color:#475569; font-size:0.9rem;">
-                    An interactive delivery tracking dashboard integrating LLMs to auto-generate executive status updates, calculate sprint burn-down risk, and parse unstructured defect logs.
-                </p>
-                <span class="badge">Python</span> <span class="badge">Pandas</span> <span class="badge">OpenAI API</span>
+            <div class="anim-card">
+                <h4>Program & Delivery Governance</h4>
+                <p>Full lifecycle ownership across hybrid and Agile frameworks.</p>
+                <span class="badge">Technical Program Management (TPM)</span>
+                <span class="badge">PMO Setup & Frameworks</span>
+                <span class="badge">Scope & Dependency Mapping</span>
+                <span class="badge">Risk & Issue Mitigation</span>
+                <span class="badge">UAT & Business Readiness</span>
             </div>
         """, unsafe_allow_html=True)
-        st.markdown("###")
-        if st.button("🚀 View AI PMO Dashboard Details", key="btn1"):
-            st.info("Repository Link: `github.com/gowthamganesan/ai-pmo-dashboard` | Features automated document generation via custom LLM prompts.")
+        st.write("**Proficiency Index:**")
+        st.progress(0.95, text="Program Management & Governance (95%)")
+        st.progress(0.90, text="UAT & Business Readiness (90%)")
+
+    with tab2:
+        st.markdown("""
+            <div class="anim-card">
+                <h4>Release & Production Operations</h4>
+                <p>ITIL-aligned deployment execution and production controls.</p>
+                <span class="badge">Environment Management</span>
+                <span class="badge">Change Advisory Board (CAB)</span>
+                <span class="badge">Go/No-Go Readiness Gates</span>
+                <span class="badge">ITIL Defect & Problem Resolution</span>
+            </div>
+        """, unsafe_allow_html=True)
+        st.write("**Proficiency Index:**")
+        st.progress(0.92, text="Release & Environment Management (92%)")
+        st.progress(0.88, text="ITIL Incident & Defect Resolution (88%)")
+
+    with tab3:
+        st.markdown("""
+            <div class="anim-card">
+                <h4>AI & Applied Technical Stack</h4>
+                <p>Practical AI-assisted prototyping and automated workflow engines.</p>
+                <span class="badge badge-ai">Vibe Coding (AI-Assisted Prototyping)</span>
+                <span class="badge badge-ai">Model Context Protocol (MCP)</span>
+                <span class="badge badge-ai">Streamlit Dashboards</span>
+                <span class="badge badge-ai">Python Scripts & LLM APIs</span>
+                <span class="badge badge-ai">Git / GitHub & CI/CD Pipelines</span>
+            </div>
+        """, unsafe_allow_html=True)
+        st.write("**Proficiency Index:**")
+        st.progress(0.85, text="Applied AI Tooling & Vibe Coding (85%)")
+        st.progress(0.80, text="Python & Streamlit Development (80%)")
+
+    with tab4:
+        st.markdown("""
+            <div class="anim-card">
+                <h4>Enterprise Platforms & Tooling</h4>
+                <span class="badge">Microsoft Dynamics 365 Business Central</span>
+                <span class="badge">Guidewire InsuranceSuite</span>
+                <span class="badge">Qualtrics</span>
+                <span class="badge">ServiceNow</span>
+                <span class="badge">Jira / Confluence</span>
+                <span class="badge">Azure DevOps</span>
+                <span class="badge">Coda</span>
+            </div>
+        """, unsafe_allow_html=True)
+
+# --- SECTION 3: AI VIBE CODING & TOOLING LAB ---
+elif nav == "3. AI Vibe Coding & Tooling Lab":
+    st.markdown("## 🧪 Live AI Tooling & PMO Application Demos")
+    st.caption("Interactive simulations of AI tools engineered to automate program management bottlenecks.")
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.markdown("""
+            <div class="anim-card">
+                <span class="badge badge-ai">Live Interactive Simulation</span>
+                <h3>📊 AI PMO Status Generator</h3>
+                <p>Simulate an AI agent parsing raw defect data into executive summaries.</p>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        raw_input = st.text_area("Input Raw Incident Log:", "Defect #409: Dynamics 365 migration timed out during UAT. 12 records unmapped.")
+        if st.button("🚀 Run AI Agent Parsing"):
+            with st.spinner("AI Agent processing via prompt pipeline..."):
+                time.sleep(1)
+                st.success("Analysis Complete!")
+                st.json({
+                    "Root Cause": "Data Mapping Timeout",
+                    "Impacted Workstream": "Dynamics 365 Migration",
+                    "Executive Summary": "Isolated non-critical defect on 12 unmapped records; UAT target timeline unimpacted.",
+                    "Recommended Action": "Trigger automated re-run script."
+                })
 
     with col2:
         st.markdown("""
-            <div class="custom-card">
-                <span class="badge badge-alt">Model Context Protocol</span>
-                <h3 style="margin-top:0.5rem; color:#0F172A;">MCP Governance & Compliance Agent</h3>
-                <p style="color:#475569; font-size:0.9rem;">
-                    Custom FastMCP agent pipeline that connects enterprise file repositories to local models to parse compliance files and auto-populate change control logs.
-                </p>
-                <span class="badge">FastMCP</span> <span class="badge">Python</span> <span class="badge">JSON-RPC</span>
+            <div class="anim-card">
+                <span class="badge badge-ai">Protocol Architecture</span>
+                <h3>🤖 MCP Governance Server</h3>
+                <p>Extracts compliance artifacts directly from project documents.</p>
             </div>
         """, unsafe_allow_html=True)
-        st.markdown("###")
-        if st.button("🚀 View MCP Agent Details", key="btn2"):
-            st.info("Repository Link: `github.com/gowthamganesan/mcp-governance-agent` | Designed for automated audit readiness.")
+        
+        doc_type = st.selectbox("Select Project Artifact Type:", ["Release Readiness Sign-off", "CAB Deployment Checklist", "UAT Defect Summary"])
+        if st.button("⚡ Generate Automated Template"):
+            st.info(f"Generated standardized {doc_type} template using LLM Prompt Engineering.")
+            st.code(f"""
+# {doc_type.upper()}
+Status: Approved for Production
+Validated By: Technical Program Manager
+Automated Verification: 100% Code Promotion Checked
+            """, language="markdown")
 
-elif page == "Career Journey":
-    st.markdown("## 💼 Professional Experience")
-    st.caption("Detailed delivery history across enterprise implementation, release leadership, and technical consulting.")
-    st.markdown("---")
+# --- SECTION 4: CAREER EXPERIENCE TIMELINE ---
+elif nav == "4. Career Experience Timeline":
+    st.markdown("## 💼 Professional Experience Timeline")
+    st.caption("Click any role to expand metrics and full project achievements.")
 
-    # Interactive Accordion Timeline
-    with st.expander("🛠️ **AI PMO Specialist & Tooling Builder** | Independent Venture | *Feb 2026 – Present*", expanded=True):
+    with st.expander("🤖 **AI Tooling Specialist & PMO Innovator** | Self-Directed Venture | *Feb 2026 – Present*", expanded=True):
         st.markdown("""
-        * **Vibe Coding & Automation:** Engineered AI-assisted scripts and Streamlit web applications to streamline PMO reporting and release tracking.
-        * **MCP Integration:** Architected Model Context Protocol agentic workflows to convert raw release notes into executive status decks.
-        * **Code Governance:** Maintained active GitHub repos with full version control and structured documentation.
+        * Built AI-assisted applications using natural language prompt-engineering ("vibe coding") and LLMs to solve PMO operational bottlenecks.
+        * Developed custom Streamlit dashboards and automated status report generators to parse raw project metrics and defect logs.
+        * Leveraged Model Context Protocol (MCP) servers and AI agents to auto-generate enterprise governance artifacts.
         """)
 
     with st.expander("💼 **Senior PMO / Implementation PM (Contract)** | Folens | *Jul 2025 – Jan 2026*"):
         st.markdown("""
-        * **Dynamics 365 Rollout:** Delivered Phase 1 of a $650K ERP deployment for 80+ users **4 weeks ahead of schedule**[cite: 1].
-        * **Governance Framework:** Established centralized PMO documentation and defect triage workflows, reducing early defects by 25%[cite: 1].
-        * **Process Automation:** Streamlined business execution, achieving 30% process automation across business workflows[cite: 1].
+        * **Dynamics 365 Rollout:** Led Phase 1 of a $650K rollout for 80+ users, delivering **4 weeks ahead of schedule** with 30% process automation.
+        * **PMO Architecture:** Established centralized documentation repositories, defect triage processes, and change control frameworks.
+        * **Quality Control:** Directed Model Office Testing, reducing early-stage deployment defects by 25% prior to UAT.
         """)
 
     with st.expander("🤝 **Senior Technology Consultant (Engagement)** | Qualtrics | *Oct 2024 – Mar 2025*"):
         st.markdown("""
-        * **Enterprise SaaS Delivery:** Led post-sales implementations from Solution Architecture handover to final deployment[cite: 1].
-        * **PMO Architecture:** Engineered a centralized PMO Resource Library in Coda to standardize delivery frameworks[cite: 1].
+        * **SaaS Implementation:** Directed full-lifecycle enterprise SaaS implementations from Solution Architect handover to client sign-off.
+        * **Documentation Standard:** Engineered a centralized PMO Handbook and Resource Library in Coda to standardize delivery templates.
         """)
 
     with st.expander("⚡ **Technical PM & Release Coordinator** | Guidewire Software | *Jun 2020 – Sep 2024*"):
         st.markdown("""
-        * **Guidewire Implementations:** Coordinated builds, deployments, and Go/No-Go readiness gates across Dev, QA, and UAT environments[cite: 1].
-        * **Downtime Reduction:** Designed daily lower-environment checklists in Jira, **reducing system downtime by 15%**[cite: 1].
+        * **SDLC Coordination:** Directed end-to-end Guidewire InsuranceSuite implementations across global cross-functional workstreams.
+        * **Operational Stability:** Created lower-environment deployment checklists in Jira, **reducing system downtime by 15%**.
+        """)
+
+    with st.expander("🌐 **Release & Deployment Manager** | Cognizant | *Mar 2016 – Dec 2018*"):
+        st.markdown("""
+        * **CAB Governance:** Managed build and rollback cadences, partnering with CAB via ServiceNow for enterprise compliance.
+        * **Deployment Success:** Authored the Release Implementation Playbook, achieving 100% release task completion with zero critical incidents.
         """)
