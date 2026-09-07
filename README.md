@@ -68,6 +68,7 @@ The Streamlit deployment will follow future pushes to `main` when connected to t
 - Removed the Creative mode toggle and private creative layer from the production experience.
 - Increased typography size and contrast for easier reading across the portfolio.
 - Differentiated the Intro as a personal positioning and capabilities view, while Experience now focuses on career chronology and delivery outcomes.
+- Restored the five-chapter career storytelling sequence to Intro while retaining the focused Experience work-history cards.
 - Preserved the three-tab Streamlit structure and existing production deployment configuration.
 
 ### 2026-09-02

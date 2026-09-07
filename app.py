@@ -135,6 +135,15 @@ st.markdown(
 
         .intro-card p { margin: 0 0 1rem; color: #eef4ff; font-size: 1.12rem; line-height: 1.78; }
 
+        .story-chapters { display: grid; gap: 1rem; margin-top: 1.4rem; }
+        .story-chapter { position: relative; padding: 1.35rem 1.25rem 1.2rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 22px; background: rgba(255,255,255,0.035); overflow: hidden; }
+        .story-chapter::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--teal), var(--pink)); }
+        .story-badge { color: var(--gold); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
+        .story-title { margin: 0.45rem 0 0.3rem; color: #fff; font-size: clamp(1.35rem, 2.4vw, 1.85rem); font-weight: 800; }
+        .story-meta { color: var(--teal); font-size: 1rem; font-weight: 700; margin-bottom: 0.9rem; }
+        .story-copy { color: #e4ecfb; line-height: 1.78; margin: 0 0 0.9rem; font-size: 1rem; }
+        .story-quote { margin: 1rem 0; padding: 0.9rem 1rem; border-left: 3px solid var(--pink); border-radius: 0 14px 14px 0; background: rgba(240,171,252,0.06); color: var(--gold); font-style: italic; line-height: 1.65; font-size: 0.98rem; }
+
         .featured-skills-title { margin: 1.5rem 0 0.8rem; color: var(--pink); font-size: 0.98rem; letter-spacing: 0.1em; text-transform: uppercase; }
         .featured-skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); align-items: start; gap: 0.75rem; }
         .featured-skill-card { align-self: start; border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 0.9rem; background: rgba(255,255,255,0.035); }
@@ -502,6 +511,31 @@ with intro_tab:
         """.format(content=content, chips="".join(f'<span class="chip">{value}</span>' for value in skills), featured=featured_html),
         unsafe_allow_html=True,
     )
+
+    chapter_html = "".join(
+        """
+        <article class="story-chapter">
+            <div class="story-badge">{badge}</div>
+            <h3 class="story-title">{title}</h3>
+            <div class="story-meta">{role} &nbsp;•&nbsp; {timeline}</div>
+            <p class="story-copy">{story}</p>
+            <div class="story-quote">“{quote}”</div>
+            <p class="story-copy">{story_2}</p>
+            <div class="chip-row">{chips}</div>
+        </article>
+        """.format(
+            badge=chapter["badge"],
+            title=chapter["title"],
+            role=chapter["role"],
+            timeline=chapter["timeline"],
+            story=chapter["story"],
+            quote=chapter["quote"],
+            story_2=chapter["story_2"],
+            chips="".join(f'<span class="chip">{skill}</span>' for skill in chapter["skills"]),
+        )
+        for chapter in intro_chapters
+    )
+    st.html(f'<div class="story-chapters">{chapter_html}</div>')
 
 with experience_tab:
     st.markdown(
