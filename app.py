@@ -145,8 +145,8 @@ st.markdown(
         .story-quote { margin: 1rem 0; padding: 0.85rem 1rem; border-left: 3px solid var(--pink); border-radius: 0 14px 14px 0; background: rgba(240,171,252,0.06); color: var(--gold); font-style: italic; line-height: 1.55; }
 
         .featured-skills-title { margin: 1.5rem 0 0.8rem; color: var(--pink); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; }
-        .featured-skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 0.75rem; }
-        .featured-skill-card { border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 0.9rem; background: rgba(255,255,255,0.035); }
+        .featured-skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); align-items: start; gap: 0.75rem; }
+        .featured-skill-card { align-self: start; border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 0.9rem; background: rgba(255,255,255,0.035); }
         .featured-skill-heading { font-weight: 800; color: var(--text); font-size: 0.84rem; margin-bottom: 0.55rem; }
         .featured-skill-list { margin: 0; padding-left: 1rem; color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
 
@@ -176,10 +176,10 @@ st.markdown(
         .company-meta { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin: 0.2rem 0 0.75rem; }
         .achievements { margin: 0; padding-left: 1.1rem; color: #dfe9ff; line-height: 1.7; }
 
-        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; }
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); align-items: start; gap: 1rem; }
         .project-card {
             background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 22px;
-            padding: 1.15rem 1.05rem; min-height: 224px; display: flex; flex-direction: column; justify-content: space-between;
+            align-self: start; padding: 1.15rem 1.05rem; display: flex; flex-direction: column; justify-content: flex-start;
             transition: transform 0.22s ease, border-color 0.22s ease;
         }
         .project-card:hover { transform: translateY(-4px); border-color: rgba(196,181,253,0.34); }
@@ -264,34 +264,9 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-creative_mode = st.toggle("Creative mode", value=False, key="creative_mode", help="Unlock the private visual portfolio with the magic phrase.")
-creative_unlocked = False
-if creative_mode:
-    magic_phrase = st.text_input("Magic phrase", type="password", placeholder="Enter the phrase to unlock", label_visibility="collapsed")
-    creative_unlocked = magic_phrase.strip().casefold() == "orchestrate the impossible"
-    st.caption("Private creative layer is locked until the phrase is entered." if not creative_unlocked else "Creative layer unlocked.")
-
-if creative_unlocked:
-    st.markdown(
-        """
-        <div class="creative-zone">
-            <div class="creative-kicker">Private creative layer · for friends and curious minds</div>
-            <div class="creative-title">Governance, but make it kinetic.</div>
-            <div class="creative-copy">This is the playful side of the portfolio: a compact visual signature for experimentation, motion, and imagination. The professional portfolio remains the default experience.</div>
-            <div class="creative-orbit-grid">
-                <div class="creative-orbit-card"><strong>01 · Imagine</strong><span>Turn a rough idea into a visible system.</span></div>
-                <div class="creative-orbit-card"><strong>02 · Compose</strong><span>Shape moving parts into a clear rhythm.</span></div>
-                <div class="creative-orbit-card"><strong>03 · Animate</strong><span>Give the work enough energy to be remembered.</span></div>
-                <div class="creative-orbit-card"><strong>04 · Deliver</strong><span>Keep the magic useful, focused, and real.</span></div>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-
 intro_options = {
     "Tell Me About Yourself": (
-        "I build dependable delivery systems that help teams move complex programs from planning to release with clarity. My work brings together program management, release governance, stakeholder alignment, and practical AI-enabled tooling, with a focus on turning operational complexity into visible, repeatable execution.",
+        "Hi! I'm Gowtham Ganesan, a Technical Program and Release Management professional with 8+ years of experience guiding complex enterprise delivery. I build dependable systems that help teams move from planning to release with clarity, bringing together program management, release governance, stakeholder alignment, and practical AI-enabled tooling. My focus is turning operational complexity into visible, repeatable execution that helps teams deliver with confidence.",
         ["Program delivery", "Release governance", "Stakeholder alignment", "AI-enabled tooling"],
     ),
 }
@@ -524,7 +499,7 @@ with intro_tab:
     st.markdown(
         """
         <div class="glass-panel intro-card">
-            <h3>Selected intro</h3>
+            <h3>Hi! I'm Gowtham Ganesan</h3>
             <p>{content}</p>
             <div class="chip-row">{chips}</div>
             <div class="featured-skills-title">Featured skills</div>
