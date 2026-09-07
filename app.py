@@ -130,51 +130,44 @@ st.markdown(
         }
 
         .intro-card h3 {
-            margin: 0 0 0.8rem; font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal);
+            margin: 0 0 0.8rem; font-size: 1.08rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal);
         }
 
-        .intro-card p { margin: 0 0 1rem; color: #dfe9ff; font-size: 1.02rem; }
+        .intro-card p { margin: 0 0 1rem; color: #eef4ff; font-size: 1.12rem; line-height: 1.78; }
 
-        .story-chapters { display: grid; gap: 1rem; margin-top: 1.4rem; }
-        .story-chapter { position: relative; padding: 1.25rem 1.2rem 1.1rem; border: 1px solid rgba(255,255,255,0.1); border-radius: 22px; background: rgba(255,255,255,0.035); overflow: hidden; }
-        .story-chapter::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--teal), var(--pink)); }
-        .story-badge { color: var(--gold); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
-        .story-title { margin: 0.45rem 0 0.3rem; color: #fff; font-size: clamp(1.2rem, 2.4vw, 1.75rem); font-weight: 800; }
-        .story-meta { color: var(--teal); font-size: 0.88rem; font-weight: 700; margin-bottom: 0.9rem; }
-        .story-copy { color: #dfe9ff; line-height: 1.72; margin: 0 0 0.9rem; font-size: 0.96rem; }
-        .story-quote { margin: 1rem 0; padding: 0.85rem 1rem; border-left: 3px solid var(--pink); border-radius: 0 14px 14px 0; background: rgba(240,171,252,0.06); color: var(--gold); font-style: italic; line-height: 1.55; }
-
-        .featured-skills-title { margin: 1.5rem 0 0.8rem; color: var(--pink); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; }
+        .featured-skills-title { margin: 1.5rem 0 0.8rem; color: var(--pink); font-size: 0.98rem; letter-spacing: 0.1em; text-transform: uppercase; }
         .featured-skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); align-items: start; gap: 0.75rem; }
         .featured-skill-card { align-self: start; border: 1px solid rgba(255,255,255,0.1); border-radius: 18px; padding: 0.9rem; background: rgba(255,255,255,0.035); }
-        .featured-skill-heading { font-weight: 800; color: var(--text); font-size: 0.84rem; margin-bottom: 0.55rem; }
-        .featured-skill-list { margin: 0; padding-left: 1rem; color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
+        .featured-skill-heading { font-weight: 800; color: var(--text); font-size: 0.96rem; line-height: 1.35; margin-bottom: 0.55rem; }
+        .featured-skill-list { margin: 0; padding-left: 1.1rem; color: #d9e5fb; font-size: 0.9rem; line-height: 1.65; }
 
         .chip-row { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-top: 0.8rem; }
         .chip {
-            font-size: 0.76rem; font-weight: 700; letter-spacing: 0.04em; padding: 0.5rem 0.85rem; border-radius: 999px;
+            font-size: 0.86rem; font-weight: 700; letter-spacing: 0.02em; padding: 0.55rem 0.9rem; border-radius: 999px;
             border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.04); color: var(--text);
         }
 
         .experience-stack { display: grid; gap: 1rem; }
 
         .experience-card {
-            display: grid; grid-template-columns: 88px 1fr; gap: 1rem; align-items: center;
+            display: grid; grid-template-columns: 96px 1fr; gap: 1.15rem; align-items: start;
             background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; padding: 1rem 1.1rem;
         }
 
         .company-logo {
-            width: 88px; height: 88px; border-radius: 20px; display: flex; align-items: center; justify-content: center;
-            font-size: 1.7rem; font-weight: 800; letter-spacing: -0.06em; color: #fff;
+            width: 96px; height: 96px; border-radius: 20px; display: flex; align-items: center; justify-content: center;
+            font-size: 1.85rem; font-weight: 800; letter-spacing: -0.06em; color: #fff;
             box-shadow: inset 0 1px 0 rgba(255,255,255,0.2), 0 16px 28px rgba(0,0,0,0.2);
         }
 
-        .level-badge { display: inline-block; margin-bottom: 0.45rem; color: var(--gold); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+        .level-badge { display: inline-block; margin-bottom: 0.45rem; color: var(--gold); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
 
-        .company-name { font-size: clamp(1.15rem, 2vw, 1.55rem); font-weight: 800; margin: 0; }
-        .company-role { font-size: 0.96rem; color: var(--teal); font-weight: 700; }
-        .company-meta { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; margin: 0.2rem 0 0.75rem; }
-        .achievements { margin: 0; padding-left: 1.1rem; color: #dfe9ff; line-height: 1.7; }
+        .company-name { font-size: clamp(1.3rem, 2vw, 1.7rem); font-weight: 800; margin: 0; }
+        .company-role { font-size: 1.06rem; color: var(--teal); font-weight: 700; }
+        .company-meta { font-size: 0.9rem; color: #c5d3ec; letter-spacing: 0.04em; text-transform: uppercase; margin: 0.25rem 0 0.8rem; }
+        .achievements { margin: 0; padding-left: 1.2rem; color: #e4ecfb; line-height: 1.78; font-size: 1rem; }
+
+        .tab-intro-note, .tab-experience-note { margin: 0 0 1rem; color: #c5d3ec; font-size: 1rem; line-height: 1.65; }
 
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); align-items: start; gap: 1rem; }
         .project-card {
@@ -266,7 +259,7 @@ st.markdown(
 
 intro_options = {
     "Tell Me About Yourself": (
-        "Hi! I'm Gowtham Ganesan, a Technical Program and Release Management professional with 8+ years of experience guiding complex enterprise delivery. I build dependable systems that help teams move from planning to release with clarity, bringing together program management, release governance, stakeholder alignment, and practical AI-enabled tooling. My focus is turning operational complexity into visible, repeatable execution that helps teams deliver with confidence.",
+        "I'm a Technical Program and Release Management professional with 8+ years of experience guiding complex enterprise delivery. I build dependable systems that help teams move from planning to release with clarity, bringing together program management, release governance, stakeholder alignment, and practical AI-enabled tooling. My focus is turning operational complexity into visible, repeatable execution that helps teams deliver with confidence.",
         ["Program delivery", "Release governance", "Stakeholder alignment", "AI-enabled tooling"],
     ),
 }
@@ -499,7 +492,8 @@ with intro_tab:
     st.markdown(
         """
         <div class="glass-panel intro-card">
-            <h3>Hi! I'm Gowtham Ganesan</h3>
+            <h3>Who I am &amp; what I do</h3>
+            <p class="tab-intro-note">Hi! I'm Gowtham Ganesan. I turn complex enterprise delivery into clear operating rhythms, trusted governance, and practical tools that help teams make better decisions.</p>
             <p>{content}</p>
             <div class="chip-row">{chips}</div>
             <div class="featured-skills-title">Featured skills</div>
@@ -509,32 +503,11 @@ with intro_tab:
         unsafe_allow_html=True,
     )
 
-    chapter_html = "".join(
-        """
-        <article class="story-chapter">
-            <div class="story-badge">{badge}</div>
-            <h3 class="story-title">{title}</h3>
-            <div class="story-meta">{role} &nbsp;•&nbsp; {timeline}</div>
-            <p class="story-copy">{story}</p>
-            <div class="story-quote">“{quote}”</div>
-            <p class="story-copy">{story_2}</p>
-            <div class="chip-row">{chips}</div>
-        </article>
-        """.format(
-            badge=chapter["badge"],
-            title=chapter["title"],
-            role=chapter["role"],
-            timeline=chapter["timeline"],
-            story=chapter["story"],
-            quote=chapter["quote"],
-            story_2=chapter["story_2"],
-            chips="".join(f'<span class="chip">{skill}</span>' for skill in chapter["skills"]),
-        )
-        for chapter in intro_chapters
-    )
-    st.html(f'<div class="story-chapters">{chapter_html}</div>')
-
 with experience_tab:
+    st.markdown(
+        '<p class="tab-experience-note">A chronological view of the environments I have led, the roles I held, and the delivery outcomes I helped create.</p>',
+        unsafe_allow_html=True,
+    )
     cards_html = "".join(
         """
         <div class="experience-card">

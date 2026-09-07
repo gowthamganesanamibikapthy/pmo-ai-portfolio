@@ -66,6 +66,8 @@ The Streamlit deployment will follow future pushes to `main` when connected to t
 - Replaced generic AI showcase placeholders with four concrete delivery tools: Cloud Go Live Command Center, GW TPgM Control Center, Guidewire PMO, and Release Governance and Stability Toolkit.
 - Documented the purpose, governance capabilities, and technology focus of each showcase project in the app data.
 - Removed the Creative mode toggle and private creative layer from the production experience.
+- Increased typography size and contrast for easier reading across the portfolio.
+- Differentiated the Intro as a personal positioning and capabilities view, while Experience now focuses on career chronology and delivery outcomes.
 - Preserved the three-tab Streamlit structure and existing production deployment configuration.
 
 ### 2026-09-02
