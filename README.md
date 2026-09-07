@@ -9,7 +9,7 @@ The production application lives on `main` and is intentionally professional by 
 - Three tabs: Intro, Experience, and AI Showcase.
 - Intro storytelling across five chapters: Cognizant, Guidewire, Qualtrics, Folens, and self-directed AI tooling.
 - Distinct progression levels from Foundation through Self-Directed Builder.
-- Selectable intro copy for a new job, interviews, and general introductions.
+- A concise public-facing intro that avoids disclosing private or audience-specific details.
 - Experience cards with company badges, roles, dates, and achievement highlights.
 - Featured skills across AI innovation, PMO management, technical validation, release management, and enterprise tools.
 - AI project showcase cards.
@@ -59,6 +59,13 @@ The Streamlit deployment will follow future pushes to `main` when connected to t
 - Email: <mailto:gowthamganesanambikapathy@gmail.com>
 
 ## Digital Change Log
+
+### 2026-09-07
+
+- Refined the production intro to use one concise public-facing portfolio narrative.
+- Replaced generic AI showcase placeholders with four concrete delivery tools: Cloud Go Live Command Center, GW TPgM Control Center, Guidewire PMO, and Release Governance and Stability Toolkit.
+- Documented the purpose, governance capabilities, and technology focus of each showcase project in the app data.
+- Preserved the three-tab Streamlit structure and existing production deployment configuration.
 
 ### 2026-09-02
 

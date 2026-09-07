@@ -290,17 +290,9 @@ if creative_unlocked:
     )
 
 intro_options = {
-    "First Day at a New Job": (
-        "I’m excited to join the team and I like to start by learning the operating rhythm quickly: the stakeholders, the release process, the critical dependencies, and the metrics that define success. I bring a calm, organized approach and I like to earn trust by doing the work reliably before trying to scale it. My strength is turning ambiguity into structure and making teams move with clarity.",
-        ["Quick ramp-up", "Stakeholder alignment", "Release discipline", "Delivery momentum"],
-    ),
-    "Interviewer Intro": (
-        "I’m a TPM and Release Management professional with 8+ years of experience in enterprise delivery, governance, and high-risk rollout execution. I’ve led multi-environment programs, release controls, cross-functional coordination, and PMO frameworks across customer-facing and internal transformation work. I combine strong delivery operations with AI-enabled tooling to improve speed, visibility, and decision quality.",
-        ["8+ years experience", "Enterprise delivery", "Risk & governance", "AI-assisted PMO"],
-    ),
     "Tell Me About Yourself": (
-        "I’m a program and release management professional who enjoys building dependable systems in fast-moving environments. My background spans release governance, cross-functional project delivery, PMO architecture, and AI-driven operational tooling. I’ve worked across consulting, enterprise implementations, and digital transformation projects, and I’m energized by work that combines structure, strategy, and practical execution.",
-        ["TPM mindset", "Release excellence", "AI-powered tooling", "Business value delivery"],
+        "I build dependable delivery systems that help teams move complex programs from planning to release with clarity. My work brings together program management, release governance, stakeholder alignment, and practical AI-enabled tooling, with a focus on turning operational complexity into visible, repeatable execution.",
+        ["Program delivery", "Release governance", "Stakeholder alignment", "AI-enabled tooling"],
     ),
 }
 
@@ -490,36 +482,31 @@ featured_skills = [
 
 project_cards = [
     {
-        "title": "Portfolio Experience Engine",
-        "desc": "A polished digital portfolio experience designed to blend enterprise storytelling with AI innovation and a premium glassmorphism interface.",
-        "stack": "Python • Streamlit • Responsive UI",
+        "title": "Cloud Go Live Command Center",
+        "desc": "A live dashboard for cloud go-live managers and administrators that reduces operational overhead through a seven-phase gate approach, with phase-specific tasks and criteria, resource call sheets, an incident command center for generating and dispatching communications, and an automation kit for change exception requests, resource call sheet templates, fallback plans, and ICC launch communications. Extension placeholders cover rollback triggers, PIRs and metrics, integrations and deployment, and ticketing simulators.",
+        "stack": "Cloud go-live governance • Seven-phase gates • Incident command",
     },
     {
-        "title": "PMO Governance Assistants",
-        "desc": "AI-assisted operational tooling to synthesize project health metrics, executive summaries, and stakeholder-ready delivery narratives.",
-        "stack": "MCP • Prompt design • Automation",
+        "title": "GW TPgM Control Center",
+        "desc": "A unified agile delivery and governance hub designed to eliminate cross-track delivery friction and provide executive visibility into complex Guidewire cloud implementations. Delivers end-to-end strategic alignment, predictive workload burnout diagnostics, multi-phase cutover protocols with checkpoint sign-offs, and an immutable compliance audit ledger capturing all real-time operational state transitions across global development workstreams.",
+        "stack": "Program Governance & PMO • Agile Workload Analytics • Compliance Audit & Cutover Management",
     },
     {
-        "title": "Release Intelligence Dashboard",
-        "desc": "A powerful view of delivery health, dependency tracking, risk posture, and release readiness across enterprise programs.",
-        "stack": "Python • Dashboarding • Analytics",
+        "title": "Guidewire PMO",
+        "desc": "A centralized operational cockpit designed to eliminate delivery blind spots in large-scale core system implementations. Combines interactive milestone dependency mapping with critical path bottleneck detection, an interactive 3x3 risk matrix tracking quantifiable dollar exposure, formal scope variation control, and automated executive reporting for steering committees and program stakeholders.",
+        "stack": "Enterprise PPM • Risk matrix & heatmaps • Steering governance",
     },
     {
-        "title": "AI Workflow Prototyping",
-        "desc": "Rapid prototyping of tools to reduce manual PMO effort, accelerate decision-making, and improve how teams collaborate around execution risk.",
-        "stack": "LLMs • Workflow automation • Product thinking",
+        "title": "Release Governance and Stability Toolkit",
+        "desc": "A live release management toolkit focused on technical and business readiness assessment, post-release metrics, and incident recurrence analysis. It follows a Release Management Gatekeeper Framework aligned with ITIL v4, COBIT, and DORA, including a pre-deployment risk evaluation engine, 1-to-5 technical and business readiness ratings, assessment summaries, governance sign-off requirements, a post-deployment recurrence matrix, calculated operational stability, historical performance trends, optimization profiles, and a placeholder for a cloud operations execution sandbox.",
+        "stack": "ITIL v4 • COBIT • DORA • Readiness and stability analytics",
     },
 ]
 
 intro_tab, experience_tab, showcase_tab = st.tabs(["Intro", "Experience", "AI Showcase"])
 
 with intro_tab:
-    show_intro_variants = st.toggle("Reveal intro variations", value=False, key="intro_toggle")
-    selected_intro = "Tell Me About Yourself"
-    if show_intro_variants:
-        selected_intro = st.selectbox("Choose intro style", list(intro_options.keys()), index=2, label_visibility="collapsed")
-
-    content, skills = intro_options[selected_intro]
+    content, skills = intro_options["Tell Me About Yourself"]
     featured_html = "".join(
         """
         <div class="featured-skill-card" style="border-color: {gradient};">
